@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>首页 · 俄语语法笔记</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home">
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="topbar">
+  <button type="button" class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">☰</button>
+  <a class="brand" href="index.html">俄语语法笔记</a>
+  <div class="search-wrap">
+    <input type="search" id="searchInput" placeholder="搜索中文或俄语…" autocomplete="off" aria-label="搜索笔记">
+    <div id="searchResults" class="search-results" hidden></div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav" aria-label="章节导航">
+<a class="nav-link active" href="index.html">首页</a>
+<a class="nav-link nav-star " href="pages/verbs.html">动词专区 ★</a>
+<a class="nav-link " href="pages/cases-ask.html">格与提问词</a>
+<a class="nav-link " href="pages/pronouns.html">代词</a>
+<a class="nav-link " href="pages/noun-plural.html">一格复数</a>
+<a class="nav-link " href="pages/case-endings.html">各格词尾</a>
+<a class="nav-link " href="pages/prepositions.html">前置词</a>
+<a class="nav-link " href="pages/adjectives.html">形容词</a>
+<a class="nav-link " href="pages/nravitsya.html">喜欢 / 有</a>
+<a class="nav-link " href="pages/motion.html">运动与交通</a>
+<a class="nav-link " href="pages/time.html">时间</a>
+<a class="nav-link " href="pages/imperative.html">命令式</a>
+<a class="nav-link " href="pages/verb-gov.html">格支配·社交</a>
+<a class="nav-link " href="pages/tense.html">时态</a>
+<a class="nav-link " href="pages/vocab.html">生词表</a>
+<a class="nav-link " href="pages/appendix.html">附录</a>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+  <main class="main" id="main">
+    
+    
+<div class="hero">
+  <p class="eyebrow">《В добрый путь!》· 深北莫数理</p>
+  <h1>俄语语法笔记</h1>
+  <p class="lede">可搜索的静态语法手册：格词尾、前置词、代词，以及新增的<strong>动词专区</strong>（体对 · 特殊变位 · 格支配）。</p>
+  <div class="hero-actions">
+    <a class="btn primary" href="pages/verbs.html">进入动词专区 ★</a>
+    <a class="btn" href="pages/cases-ask.html">从格与提问词开始</a>
+  </div>
+</div>
+
+<section class="card" data-searchable id="how-to-use">
+  <h2>怎么用这个站</h2>
+  <ul>
+    <li>左侧（手机上点 ☰）按章节跳转。</li>
+    <li>顶部搜索框：输入<strong>中文</strong>或<strong>俄语</strong>（如「三格」「дать」「куда」），点结果跳到段落并高亮。</li>
+    <li>动词专区比原 Markdown 更完整，含体对、变位表、支配表。</li>
+  </ul>
+</section>
+
+<section class="card" id="chapter-grid">
+  <h2>章节目录</h2>
+  <div class="grid">
+    <a class="tile star" href="pages/verbs.html"><span class="tile-k">★</span><span>动词专区</span><small>НСВ/СВ · 变位 · 格支配</small></a>
+    <a class="tile" href="pages/cases-ask.html"><span class="tile-k">1</span><span>格与提问词</span><small>куда / где / откуда</small></a>
+    <a class="tile" href="pages/pronouns.html"><span class="tile-k">2–3</span><span>代词</span><small>人称 · 物主 · чей</small></a>
+    <a class="tile" href="pages/noun-plural.html"><span class="tile-k">4</span><span>一格复数</span><small>规则与不规则</small></a>
+    <a class="tile" href="pages/case-endings.html"><span class="tile-k">5–9</span><span>各格词尾</span><small>二～六格</small></a>
+    <a class="tile" href="pages/prepositions.html"><span class="tile-k">10</span><span>前置词</span><small>в на из с к о …</small></a>
+    <a class="tile" href="pages/adjectives.html"><span class="tile-k">11</span><span>形容词</span><small>一格词尾</small></a>
+    <a class="tile" href="pages/nravitsya.html"><span class="tile-k">12–13</span><span>喜欢 / 有</span><small>нравиться · есть/нет</small></a>
+    <a class="tile" href="pages/motion.html"><span class="tile-k">14–15</span><span>运动与交通</span><small>идти ехать · на+6</small></a>
+    <a class="tile" href="pages/time.html"><span class="tile-k">16</span><span>时间表达</span><small>星期 · 季节 · 月</small></a>
+    <a class="tile" href="pages/imperative.html"><span class="tile-k">17</span><span>命令式</span><small>ты / вы</small></a>
+    <a class="tile" href="pages/verb-gov.html"><span class="tile-k">18·22</span><span>格支配·社交</span><small>及物 · с кем</small></a>
+    <a class="tile" href="pages/tense.html"><span class="tile-k">23</span><span>过去时与将来时</span><small>л/ла/ли · буду</small></a>
+    <a class="tile" href="pages/vocab.html"><span class="tile-k">24</span><span>生词表</span><small>按主题归类</small></a>
+  </div>
+</section>
+
+  </main>
+</div>
+<footer class="site-footer">
+  <p>教材：《В добрый путь!》· 深北莫数理 · 纯静态可搜索笔记</p>
+</footer>
+<script src="js/search-index.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
