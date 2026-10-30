@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动词专区 · 俄语语法笔记</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="">
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="topbar">
+  <button type="button" class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">☰</button>
+  <a class="brand" href="../index.html">俄语语法笔记</a>
+  <div class="search-wrap">
+    <input type="search" id="searchInput" placeholder="搜索中文或俄语…" autocomplete="off" aria-label="搜索笔记">
+    <div id="searchResults" class="search-results" hidden></div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav" aria-label="章节导航">
+<a class="nav-link " href="../index.html">首页</a>
+<a class="nav-link nav-star active" href="verbs.html">动词专区 ★</a>
+<a class="nav-link " href="cases-ask.html">格与提问词</a>
+<a class="nav-link " href="pronouns.html">代词</a>
+<a class="nav-link " href="noun-plural.html">一格复数</a>
+<a class="nav-link " href="case-endings.html">各格词尾</a>
+<a class="nav-link " href="prepositions.html">前置词</a>
+<a class="nav-link " href="adjectives.html">形容词</a>
+<a class="nav-link " href="nravitsya.html">喜欢 / 有</a>
+<a class="nav-link " href="motion.html">运动与交通</a>
+<a class="nav-link " href="time.html">时间</a>
+<a class="nav-link " href="imperative.html">命令式</a>
+<a class="nav-link " href="verb-gov.html">格支配·社交</a>
+<a class="nav-link " href="tense.html">时态</a>
+<a class="nav-link " href="vocab.html">生词表</a>
+<a class="nav-link " href="appendix.html">附录</a>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+  <main class="main" id="main">
+    <p class="crumbs"><a href="../index.html">首页</a> / 动词专区</p>
+    
+<div class="page-header">
+  <p class="eyebrow">新增专区 · 比原笔记更完整</p>
+  <h1>动词专区</h1>
+  <p class="lede">未完成体 / 完成体、特殊变位、动词格支配——集中查阅。可搜索俄语不定式或中文义项。</p>
+</div>
+
+<nav class="toc-local">
+  <a href="#aspect">体：НСВ / СВ</a>
+  <a href="#aspect-pairs">常用体对表</a>
+  <a href="#special-conj">特殊变位</a>
+  <a href="#case-gov">动词→几格支配</a>
+  <a href="#dative-vs-accusative">三格 vs 四格速记</a>
+</nav>
+
+<section class="card" id="aspect" data-searchable>
+  <h2>未完成体 НСВ · 完成体 СВ</h2>
+  <div class="two-col">
+    <div class="pill-box nsv">
+      <h3>НСВ 未完成体 <span class="ru">несовершенный вид</span></h3>
+      <ul>
+        <li><strong>过程</strong>：正在做、持续做</li>
+        <li><strong>重复 / 习惯</strong>：经常、总是</li>
+        <li><strong>能力 / 一般事实</strong></li>
+        <li>现在时只有 НСВ</li>
+        <li>将来时用 <span class="ru">буду + 不定式</span></li>
+      </ul>
+      <p class="ex">Я <strong>чита́ю</strong> кни́гу.（我在看书）</p>
+      <p class="ex">Ка́ждый день я <strong>пишу́</strong> письма́.（我每天写信）</p>
+    </div>
+    <div class="pill-box sv">
+      <h3>СВ 完成体 <span class="ru">совершенный вид</span></h3>
+      <ul>
+        <li><strong>结果</strong>：做完、做成</li>
+        <li><strong>一次性</strong>具体行为</li>
+        <li><strong>开始 / 结束</strong>某动作</li>
+        <li>没有真正的现在时</li>
+        <li>变位形式表示<strong>将来</strong>完成</li>
+      </ul>
+      <p class="ex">Я <strong>прочита́л</strong> кни́гу.（我看完了这本书）</p>
+      <p class="ex">За́втра я <strong>напишу́</strong> письмо́.（明天我把信写完）</p>
+    </div>
+  </div>
+  <h3>何时用哪个？</h3>
+  <table>
+    <thead><tr><th>情境</th><th>用哪个体</th><th>例</th></tr></thead>
+    <tbody>
+      <tr><td>正在进行 / 过程</td><td class="tag-nsv">НСВ</td><td class="ru">Что ты де́лаешь? — Чита́ю.</td></tr>
+      <tr><td>习惯、重复</td><td class="tag-nsv">НСВ</td><td class="ru">Я ча́сто звоню́ ма́ме.</td></tr>
+      <tr><td>会不会、能不能（一般）</td><td class="tag-nsv">НСВ</td><td class="ru">Я могу́ чита́ть по-ру́сски.</td></tr>
+      <tr><td>做成了 / 要做成</td><td class="tag-sv">СВ</td><td class="ru">Я поня́л. / Я пойму́.</td></tr>
+      <tr><td>一次性请求、命令（做成）</td><td class="tag-sv">СВ</td><td class="ru">Напиши́! Позвони́!</td></tr>
+      <tr><td>请一直做、一般行为命令</td><td class="tag-nsv">НСВ</td><td class="ru">Пиши́ внима́тельно! Говори́те!</td></tr>
+      <tr><td>否定：别去做（别开始）</td><td class="tag-nsv">НСВ</td><td class="ru">Не открыва́й окно́!</td></tr>
+      <tr><td>否定：别做成某结果（警告）</td><td class="tag-sv">СВ</td><td class="ru">Смотри́, не упади́!</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="card" id="aspect-pairs" data-searchable>
+  <h2>常用体对表</h2>
+  <p>左栏未完成体（过程），右栏完成体（结果）。标 ★ 的是本课高频对。</p>
+  <div class="table-scroll">
+  <table class="aspect-table">
+    <thead><tr><th>НСВ 未完成</th><th>СВ 完成</th><th>中文</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="ru">дава́ть ★</td><td class="ru">дать ★</td><td>给</td><td>特殊变位，见下表</td></tr>
+      <tr class="hi"><td class="ru">понима́ть ★</td><td class="ru">поня́ть ★</td><td>懂 / 理解</td><td>пойму́, поймёшь…</td></tr>
+      <tr class="hi"><td class="ru">расска́зывать ★</td><td class="ru">рассказа́ть ★</td><td>讲述</td><td>что? (4) кому́? (3)</td></tr>
+      <tr class="hi"><td class="ru">идти́ ★</td><td class="ru">пойти́ ★</td><td>走（去）</td><td>单向；习惯用 ходи́ть</td></tr>
+      <tr class="hi"><td class="ru">мочь ★</td><td class="ru">смочь ★</td><td>能 / 能做成</td><td>могу́ / смогу́</td></tr>
+      <tr class="hi"><td class="ru">нра́виться ★</td><td class="ru">понра́виться ★</td><td>喜欢（合心意）</td><td>кому́ + 一格</td></tr>
+      <tr class="hi"><td class="ru">говори́ть ★</td><td class="ru">сказа́ть ★</td><td>说</td><td>скажи́ / скажи́те</td></tr>
+      <tr class="hi"><td class="ru">писа́ть ★</td><td class="ru">написа́ть ★</td><td>写</td><td>с→ш：пишу́</td></tr>
+      <tr class="hi"><td class="ru">чита́ть ★</td><td class="ru">прочита́ть ★</td><td>读</td><td></td></tr>
+      <tr class="hi"><td class="ru">де́лать ★</td><td class="ru">сде́лать ★</td><td>做</td><td></td></tr>
+      <tr class="hi"><td class="ru">смотре́ть ★</td><td class="ru">посмотре́ть ★</td><td>看</td><td></td></tr>
+      <tr class="hi"><td class="ru">учи́ть ★</td><td class="ru">вы́учить ★</td><td>学 / 学会</td><td>及物 + 四格</td></tr>
+      <tr><td class="ru">знать</td><td class="ru">узна́ть</td><td>知道 / 得知</td><td></td></tr>
+      <tr><td class="ru">слу́шать</td><td class="ru">послу́шать</td><td>听</td><td></td></tr>
+      <tr><td class="ru">рисова́ть</td><td class="ru">нарисова́ть</td><td>画</td><td></td></tr>
+      <tr><td class="ru">гото́вить</td><td class="ru">пригото́вить</td><td>准备 / 做饭</td><td></td></tr>
+      <tr><td class="ru">есть</td><td class="ru">съесть</td><td>吃</td><td></td></tr>
+      <tr><td class="ru">пить</td><td class="ru">вы́пить</td><td>喝</td><td></td></tr>
+      <tr><td class="ru">фотографи́ровать</td><td class="ru">сфотографи́ровать</td><td>拍照</td><td></td></tr>
+      <tr><td class="ru">повторя́ть</td><td class="ru">повтори́ть</td><td>重复 / 复习</td><td></td></tr>
+      <tr><td class="ru">реша́ть</td><td class="ru">реши́ть</td><td>解 / 决定</td><td></td></tr>
+      <tr><td class="ru">получа́ть</td><td class="ru">получи́ть</td><td>收到</td><td></td></tr>
+      <tr><td class="ru">пока́зывать</td><td class="ru">показа́ть</td><td>给……看</td><td>4+3</td></tr>
+      <tr><td class="ru">брать</td><td class="ru">взять</td><td>拿</td><td></td></tr>
+      <tr><td class="ru">иска́ть</td><td class="ru">найти́</td><td>找 / 找到</td><td>найду́</td></tr>
+      <tr><td class="ru">покупа́ть</td><td class="ru">купи́ть</td><td>买</td><td>п→пл：куплю́</td></tr>
+      <tr><td class="ru">отдыха́ть</td><td class="ru">отдохну́ть</td><td>休息</td><td></td></tr>
+      <tr><td class="ru">перево́дить</td><td class="ru">перевести́</td><td>翻译</td><td></td></tr>
+      <tr><td class="ru">звони́ть</td><td class="ru">позвони́ть</td><td>打电话</td><td>+ 三格</td></tr>
+      <tr><td class="ru">приглаша́ть</td><td class="ru">пригласи́ть</td><td>邀请</td><td></td></tr>
+      <tr><td class="ru">поздравля́ть</td><td class="ru">поздра́вить</td><td>祝贺</td><td>кого́? с чем?</td></tr>
+      <tr><td class="ru">встреча́ться</td><td class="ru">встре́титься</td><td>见面</td><td>с кем? (5)</td></tr>
+      <tr><td class="ru">знако́миться</td><td class="ru">познако́миться</td><td>结识</td><td>с кем? (5)</td></tr>
+      <tr><td class="ru">сове́товаться</td><td class="ru">посове́товаться</td><td>商量</td><td>с кем? (5)</td></tr>
+      <tr><td class="ru">здоро́ваться</td><td class="ru">поздоро́ваться</td><td>打招呼</td><td>с кем? (5)</td></tr>
+      <tr><td class="ru">проща́ться</td><td class="ru">попроща́ться</td><td>告别</td><td>с кем? (5)</td></tr>
+      <tr><td class="ru">броса́ть</td><td class="ru">бро́сить</td><td>扔</td><td>что? кому́?</td></tr>
+      <tr><td class="ru">помога́ть</td><td class="ru">помо́чь</td><td>帮助</td><td>+ 三格</td></tr>
+      <tr><td class="ru">е́хать</td><td class="ru">пое́хать</td><td>乘行 / 出发乘行</td><td></td></tr>
+      <tr><td class="ru">люби́ть</td><td class="ru">полюби́ть</td><td>爱 / 爱上</td><td>+ 四格</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="card" id="special-conj" data-searchable>
+  <h2>特殊变位表</h2>
+
+  <h3 id="conj-dat">дать（СВ）/ дава́ть（НСВ）——给</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th></th><th>дава́ть НСВ</th><th>дать СВ</th></tr></thead>
+    <tbody>
+      <tr><td>я</td><td class="ru">даю́</td><td class="ru">дам</td></tr>
+      <tr><td>ты</td><td class="ru">даёшь</td><td class="ru">дашь</td></tr>
+      <tr><td>он/она́</td><td class="ru">даёт</td><td class="ru">даст</td></tr>
+      <tr><td>мы</td><td class="ru">даём</td><td class="ru">дади́м</td></tr>
+      <tr><td>вы</td><td class="ru">даёте</td><td class="ru">дади́те</td></tr>
+      <tr><td>они́</td><td class="ru">даю́т</td><td class="ru">даду́т</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>命令式：<span class="ru">Дай! / Да́йте!</span> · 支配：<strong>что? (4) кому́? (3)</strong></p>
+  <p class="ex">Я дам тебе́ кни́гу. · Да́йте, пожа́луйста, меню́.</p>
+
+  <h3 id="conj-ponyat">поня́ть（СВ）——理解 / 明白</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>я</th><th>ты</th><th>он/она́</th><th>мы</th><th>вы</th><th>они́</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="ru">пойму́</td><td class="ru">поймёшь</td><td class="ru">поймёт</td>
+        <td class="ru">поймём</td><td class="ru">поймёте</td><td class="ru">пойму́т</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p>过去：<span class="ru">по́нял / поняла́ / по́няли</span> · 命令：<span class="ru">Пойми́! / Пойми́те!</span></p>
+  <p>НСВ <span class="ru">понима́ть</span>：понима́ю, понима́ешь, понима́ет…</p>
+
+  <h3 id="conj-rasskazat">рассказа́ть（СВ）——讲述</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>я</th><th>ты</th><th>он/она́</th><th>мы</th><th>вы</th><th>они́</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="ru">расскажу́</td><td class="ru">расска́жешь</td><td class="ru">расска́жет</td>
+        <td class="ru">расска́жем</td><td class="ru">расска́жете</td><td class="ru">расска́жут</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p>НСВ <span class="ru">расска́зывать</span>：расска́зываю, расска́зываешь… · <strong>что? (4) кому́? (3)</strong></p>
+  <p class="ex">Расскажи́ мне э́ту исто́рию!</p>
+
+  <h3 id="conj-khotet">хоте́ть——想要（混合变位）</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>я</th><th>ты</th><th>он/она́</th><th>мы</th><th>вы</th><th>они́</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="ru">хочу́</td><td class="ru">хо́чешь</td><td class="ru">хо́чет</td>
+        <td class="ru">хоти́м</td><td class="ru">хоти́те</td><td class="ru">хотя́т</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">单数像第一变位（-ешь），复数像第二变位（-им / -ят）。过去：хоте́л / хоте́ла / хоте́ли。</p>
+  <p class="ex">Я хочу́ пойти́ в клуб. · Вы хоти́те стать худо́жником?</p>
+
+  <h3 id="conj-moch">мочь（НСВ）/ смочь（СВ）——能</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th></th><th>мочь 能（过程/一般）</th><th>смочь 能做成</th></tr></thead>
+    <tbody>
+      <tr><td>я</td><td class="ru">могу́</td><td class="ru">смогу́</td></tr>
+      <tr><td>ты</td><td class="ru">мо́жешь</td><td class="ru">смо́жешь</td></tr>
+      <tr><td>он/она́</td><td class="ru">мо́жет</td><td class="ru">смо́жет</td></tr>
+      <tr><td>мы</td><td class="ru">мо́жем</td><td class="ru">смо́жем</td></tr>
+      <tr><td>вы</td><td class="ru">мо́жете</td><td class="ru">смо́жете</td></tr>
+      <tr><td>они́</td><td class="ru">мо́гут</td><td class="ru">смо́гут</td></tr>
+      <tr><td>过去</td><td class="ru">мог / могла́ / могли́</td><td class="ru">смог / смогла́ / смогли́</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="ex">Я могу́ чита́ть.（我会读/能读）· Я смог прочита́ть всю кни́гу.（我读完了整本书）</p>
+  <p><strong>уметь</strong>：掌握技能（会做某事），与 мочь 区分记。</p>
+</section>
+
+<section class="card" id="case-gov" data-searchable>
+  <h2>动词 → 几格支配表</h2>
+  <p>列：动词｜几格｜提问词｜例句｜中文。彩色标签标出格。</p>
+  <div class="table-scroll">
+  <table class="gov-table">
+    <thead>
+      <tr><th>动词</th><th>几格</th><th>提问词</th><th>例句</th><th>中文</th></tr>
+    </thead>
+    <tbody>
+      <tr class="case-3">
+        <td class="ru">дать / дава́ть</td><td><span class="badge b3">3</span>（+4 物）</td>
+        <td class="ru">кому́? что?</td>
+        <td class="ru">Дай <b>мне</b> ру́чку.</td><td>给我一支笔</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">помога́ть / помо́чь</td><td><span class="badge b3">3</span></td>
+        <td class="ru">кому́?</td>
+        <td class="ru">Помоги́ <b>дру́гу</b>.</td><td>帮助朋友</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">звони́ть / позвони́ть</td><td><span class="badge b3">3</span></td>
+        <td class="ru">кому́?</td>
+        <td class="ru">Я звоню́ <b>ма́ме</b>.</td><td>我给妈妈打电话</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">нра́виться / понра́виться</td><td><span class="badge b3">3</span>（物用一格）</td>
+        <td class="ru">кому́? что?</td>
+        <td class="ru"><b>Мне</b> нра́вится э́тот фильм.</td><td>我喜欢这部电影</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">говори́ть / сказа́ть</td><td><span class="badge b3">3</span>（+4 内容）</td>
+        <td class="ru">кому́? что?</td>
+        <td class="ru">Скажи́ <b>ему́</b> пра́вду.</td><td>把真相告诉他</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">расска́зывать / рассказа́ть</td><td><span class="badge b3">3</span>+<span class="badge b4">4</span></td>
+        <td class="ru">кому́? что?</td>
+        <td class="ru">Расскажи́ <b>нам</b> исто́рию.</td><td>给我们讲故事</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">пока́зывать / показа́ть</td><td><span class="badge b3">3</span>+<span class="badge b4">4</span></td>
+        <td class="ru">кому́? что?</td>
+        <td class="ru">Покажи́ <b>мне</b> фото́.</td><td>给我看看照片</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">отвеча́ть / отве́тить</td><td><span class="badge b3">3</span></td>
+        <td class="ru">кому́?</td>
+        <td class="ru">Отве́ть <b>преподава́телю</b>.</td><td>回答老师</td>
+      </tr>
+      <tr class="case-3">
+        <td class="ru">сове́товать / посове́товать</td><td><span class="badge b3">3</span></td>
+        <td class="ru">кому́?</td>
+        <td class="ru">Я сове́тую <b>вам</b>…</td><td>我建议您……</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">ви́деть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">кого́? что?</td>
+        <td class="ru">Я ви́жу <b>сестру́</b>.</td><td>我看见妹妹</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">люби́ть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">кого́? что?</td>
+        <td class="ru">Я люблю́ <b>му́зыку</b>.</td><td>我爱音乐</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">спроси́ть / спра́шивать</td><td><span class="badge b4">4</span></td>
+        <td class="ru">кого́?</td>
+        <td class="ru">Спроси́ <b>Ива́на</b>.</td><td>问问伊万</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">чита́ть / прочита́ть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">что?</td>
+        <td class="ru">Чита́ю <b>кни́гу</b>.</td><td>在读书</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">писа́ть / написа́ть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">что?</td>
+        <td class="ru">Пишу́ <b>письмо́</b>.</td><td>在写信</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">смотре́ть / посмотре́ть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">что?</td>
+        <td class="ru">Смотре́ть <b>фильм</b>.</td><td>看电影</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">понима́ть / поня́ть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">кого́? что?</td>
+        <td class="ru">Я понима́ю <b>тебя́</b>.</td><td>我理解你</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">знать / узна́ть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">кого́? что?</td>
+        <td class="ru">Зна́ю <b>Ива́на</b>.</td><td>认识伊万</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">де́лать / сде́лать</td><td><span class="badge b4">4</span></td>
+        <td class="ru">что?</td>
+        <td class="ru">Де́лать <b>уро́ки</b>.</td><td>做作业</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">учи́ть / вы́учить</td><td><span class="badge b4">4</span></td>
+        <td class="ru">что?</td>
+        <td class="ru">Учи́ть <b>слова́</b>.</td><td>记单词</td>
+      </tr>
+      <tr class="case-4">
+        <td class="ru">покупа́ть / купи́ть</td><td><span class="badge b4">4</span></td>
+        <td class="ru">что?</td>
+        <td class="ru">Купи́ <b>хлеб</b>.</td><td>买面包</td>
+      </tr>
+      <tr class="case-2">
+        <td class="ru">у + …</td><td><span class="badge b2">2</span></td>
+        <td class="ru">у кого́?</td>
+        <td class="ru">У <b>меня́</b> есть кни́га.</td><td>我有书</td>
+      </tr>
+      <tr class="case-2">
+        <td class="ru">нет / не́ было</td><td><span class="badge b2">2</span></td>
+        <td class="ru">кого́? чего́?</td>
+        <td class="ru">Нет <b>вре́мени</b>.</td><td>没有时间</td>
+      </tr>
+      <tr class="case-2">
+        <td class="ru">из / с（откуда）</td><td><span class="badge b2">2</span></td>
+        <td class="ru">отку́да?</td>
+        <td class="ru">Из <b>шко́лы</b>.</td><td>从学校来</td>
+      </tr>
+      <tr class="case-2">
+        <td class="ru">без / по́сле</td><td><span class="badge b2">2</span></td>
+        <td class="ru">без чего́? по́сле чего́?</td>
+        <td class="ru">Без <b>молока́</b>. По́сле <b>обе́да</b>.</td><td>不加奶；午饭后</td>
+      </tr>
+      <tr class="case-5">
+        <td class="ru">знако́миться</td><td><span class="badge b5">5</span></td>
+        <td class="ru">с кем?</td>
+        <td class="ru">Знако́миться с <b>со́седом</b>.</td><td>和邻居认识</td>
+      </tr>
+      <tr class="case-5">
+        <td class="ru">встреча́ться</td><td><span class="badge b5">5</span></td>
+        <td class="ru">с кем?</td>
+        <td class="ru">Встре́тимся с <b>дру́гом</b>.</td><td>和朋友见面</td>
+      </tr>
+      <tr class="case-5">
+        <td class="ru">разгово́ривать</td><td><span class="badge b5">5</span></td>
+        <td class="ru">с кем?</td>
+        <td class="ru">Разгова́ривать с <b>преподава́телем</b>.</td><td>和老师谈话</td>
+      </tr>
+      <tr class="case-5">
+        <td class="ru">поздравля́ть</td><td><span class="badge b4">4</span>+<span class="badge b5">5</span></td>
+        <td class="ru">кого́? с чем?</td>
+        <td class="ru">Поздра́вить <b>дру́га</b> с днём рожде́ния.</td><td>祝贺朋友生日</td>
+      </tr>
+      <tr class="case-6">
+        <td class="ru">жить / рабо́тать / учи́ться</td><td><span class="badge b6">6</span></td>
+        <td class="ru">где?</td>
+        <td class="ru">Жить в <b>Москве́</b>.</td><td>住在莫斯科</td>
+      </tr>
+      <tr class="case-6">
+        <td class="ru">говори́ть о …</td><td><span class="badge b6">6</span></td>
+        <td class="ru">о ком? о чём?</td>
+        <td class="ru">Говори́ть о <b>фильме</b>.</td><td>谈论电影</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="card callout" id="dative-vs-accusative" data-searchable>
+  <h2>三格 vs 四格 · 速记</h2>
+  <div class="two-col">
+    <div>
+      <h3><span class="badge b3">三格</span> кому́? чему́?</h3>
+      <p>「给谁 / 对谁」——对象、受益者</p>
+      <ul class="ru-list">
+        <li>дать / помога́ть / звони́ть / нра́виться</li>
+        <li>говори́ть / сказа́ть кому́</li>
+        <li>к + 三格：к врачу́</li>
+      </ul>
+    </div>
+    <div>
+      <h3><span class="badge b4">四格</span> кого́? что?</h3>
+      <p>「把什么 / 看见谁」——直接宾语</p>
+      <ul class="ru-list">
+        <li>ви́деть / люби́ть / спроси́ть / чита́ть</li>
+        <li>писа́ть / смотре́ть / понима́ть / де́лать</li>
+        <li>в/на + 四格 = куда?（方向）</li>
+      </ul>
+    </div>
+  </div>
+  <p class="tip"><strong>双支配口诀：</strong>把什么（四格）给谁（三格）—— дать / показа́ть / рассказа́ть / бро́сить。</p>
+  <p class="tip"><strong>二格高频：</strong>у кого́? · нет + 2 · из/с + 2（откуда）· без / по́сле + 2。</p>
+</section>
+<section class="card muted" id="orig-19" data-searchable><h2>原笔记 · 19. мочь / смочь、уметь</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>мочь（НСВ，能）</th>
+<th>смочь（СВ，能做成）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>现在/将来</td>
+<td>могу́, мо́жешь, мо́жет, мо́жем, мо́жете, мо́гут</td>
+<td>смогу́, смо́жешь, … смо́гут</td>
+</tr>
+<tr>
+<td>过去</td>
+<td>мог, могла́, могли́</td>
+<td>смог, смогла́, смогли́</td>
+</tr>
+<tr>
+<td>搭配</td>
+<td>мог чита́ть / могла́ писа́ть</td>
+<td>смог прочита́ть / смогла́ написа́ть</td>
+</tr>
+</tbody>
+</table>
+<p><strong>уметь</strong>：会（掌握某种技能）——笔记旁注「能/会」，与 мочь 区分记忆。  </p>
+<p>（笔记未系统展开 надо / ну́жно / мо́жно；此处不扩写。）</p>
+<hr /></section>
+<section class="card muted" id="orig-20" data-searchable><h2>原笔记 · 20. 体对（НСВ / СВ）</h2><table>
+<thead>
+<tr>
+<th>НСВ 未完成（过程、重复）</th>
+<th>СВ 完成（结果）</th>
+<th>义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>знать</td>
+<td>узна́ть</td>
+<td>知道 / 得知</td>
+</tr>
+<tr>
+<td>смотре́ть</td>
+<td>посмотре́ть</td>
+<td>看</td>
+</tr>
+<tr>
+<td>слу́шать</td>
+<td>послу́шать</td>
+<td>听</td>
+</tr>
+<tr>
+<td>чита́ть</td>
+<td>прочита́ть</td>
+<td>读</td>
+</tr>
+<tr>
+<td>писа́ть</td>
+<td>написа́ть</td>
+<td>写</td>
+</tr>
+<tr>
+<td>рисова́ть</td>
+<td>нарисова́ть</td>
+<td>画</td>
+</tr>
+<tr>
+<td>учи́ть</td>
+<td>вы́учить</td>
+<td>学 / 学会</td>
+</tr>
+<tr>
+<td>гото́вить</td>
+<td>пригото́вить</td>
+<td>准备 / 做（饭）</td>
+</tr>
+<tr>
+<td>есть</td>
+<td>съесть</td>
+<td>吃</td>
+</tr>
+<tr>
+<td>пить</td>
+<td>вы́пить</td>
+<td>喝</td>
+</tr>
+<tr>
+<td>фотографи́ровать</td>
+<td>сфотографи́ровать</td>
+<td>拍照</td>
+</tr>
+<tr>
+<td>повторя́ть</td>
+<td>повтори́ть</td>
+<td>重复 / 复习</td>
+</tr>
+<tr>
+<td>реша́ть</td>
+<td>реши́ть</td>
+<td>解 / 决定</td>
+</tr>
+<tr>
+<td>получа́ть</td>
+<td>получи́ть</td>
+<td>收到</td>
+</tr>
+<tr>
+<td>пока́зывать</td>
+<td>показа́ть</td>
+<td>给……看</td>
+</tr>
+<tr>
+<td>расска́зывать</td>
+<td>рассказа́ть</td>
+<td>讲述</td>
+</tr>
+<tr>
+<td>дава́ть</td>
+<td>дать</td>
+<td>给</td>
+</tr>
+<tr>
+<td>говори́ть</td>
+<td>сказа́ть</td>
+<td>说</td>
+</tr>
+<tr>
+<td>брать</td>
+<td>взять</td>
+<td>拿</td>
+</tr>
+<tr>
+<td>иска́ть</td>
+<td>найти́</td>
+<td>找 / 找到</td>
+</tr>
+<tr>
+<td>покупа́ть</td>
+<td>купи́ть</td>
+<td>买</td>
+</tr>
+<tr>
+<td>отдыха́ть</td>
+<td>отдохну́ть</td>
+<td>休息</td>
+</tr>
+<tr>
+<td>перево́дить</td>
+<td>перевести́</td>
+<td>翻译</td>
+</tr>
+<tr>
+<td>звони́ть</td>
+<td>позвони́ть</td>
+<td>打电话</td>
+</tr>
+<tr>
+<td>приглаша́ть</td>
+<td>пригласи́ть</td>
+<td>邀请</td>
+</tr>
+<tr>
+<td>понима́ть</td>
+<td>поня́ть</td>
+<td>懂</td>
+</tr>
+<tr>
+<td>мочь</td>
+<td>смочь</td>
+<td>能</td>
+</tr>
+<tr>
+<td>поздравля́ть</td>
+<td>поздра́вить</td>
+<td>祝贺</td>
+</tr>
+<tr>
+<td>встреча́ться</td>
+<td>встре́титься</td>
+<td>见面</td>
+</tr>
+<tr>
+<td>знако́миться</td>
+<td>познако́миться</td>
+<td>结识</td>
+</tr>
+<tr>
+<td>сове́товаться</td>
+<td>посове́товаться</td>
+<td>商量</td>
+</tr>
+<tr>
+<td>здоро́ваться</td>
+<td>поздоро́ваться</td>
+<td>打招呼</td>
+</tr>
+<tr>
+<td>проща́ться</td>
+<td>попроща́ться</td>
+<td>告别</td>
+</tr>
+<tr>
+<td>броса́ть</td>
+<td>бро́сить</td>
+<td>扔</td>
+</tr>
+<tr>
+<td>помога́ть</td>
+<td>помо́чь</td>
+<td>帮助</td>
+</tr>
+</tbody>
+</table>
+<hr /></section>
+<section class="card muted" id="orig-21" data-searchable><h2>原笔记 · 21. 不规则与特殊变位动词</h2><h3 id="211">21.1 第一变位 / 第二变位示例</h3>
+<p><strong>понима́ть I</strong><br />
+я понима́ю · ты понима́ешь · он/она́ понима́ет · мы понима́ем · вы понима́ете · они́ понима́ют  </p>
+<p><strong>говори́ть II</strong><br />
+я говорю́ · ты говори́шь · он/она́ говори́т · мы говори́м · вы говори́те · они́ говоря́т（-ят）  </p>
+<p><strong>писа́ть I</strong>（с → ш）<br />
+я пишу́ · ты пи́шешь · он пи́шет · мы пи́шем · вы пи́шете · они́ пи́шут<br />
+例：я пишу́ слова́ по-ру́сски · ты пи́шешь стихи́ по-кита́йски  </p>
+<p><strong>петь I</strong> + что? (4)<br />
+я пою́ · ты поёшь · он/она́ поёт · мы поём · вы поёте · они́ пою́т  </p>
+<p><strong>ката́ться I</strong> + на чём? (6)<br />
+я ката́юсь · ты ката́ешься · … · они́ ката́ются  </p>
+<p><strong>фотографи́ровать I</strong>（-ова- → -у-）+ кого́? что? (4)<br />
+я фотографи́рую · ты фотографи́руешь · … · они́ фотографи́руют<br />
+宾语例：подру́гу, дру́га, го́род, приро́ду, мо́ре, го́ры  </p>
+<h3 id="212">21.2 хоте́ть（混合变位）</h3>
+<p>я хочу́ · ты хо́чешь · он/она́ хо́чет · мы хоти́м · вы хоти́те · они́ хотя́т<br />
+过去：хоте́л / -а / -и  </p>
+<h3 id="213">21.3 дать / дава́ть</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>дава́ть НСВ</th>
+<th>дать СВ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>я</td>
+<td>даю́</td>
+<td>дам</td>
+</tr>
+<tr>
+<td>ты</td>
+<td>даёшь</td>
+<td>дашь</td>
+</tr>
+<tr>
+<td>он</td>
+<td>даёт</td>
+<td>даст</td>
+</tr>
+<tr>
+<td>мы</td>
+<td>даём</td>
+<td>дади́м</td>
+</tr>
+<tr>
+<td>вы</td>
+<td>даёте</td>
+<td>дади́те</td>
+</tr>
+<tr>
+<td>они</td>
+<td>даю́т</td>
+<td>даду́т</td>
+</tr>
+</tbody>
+</table>
+<p>命令式：Дай! / Да́йте!</p>
+<h3 id="214">21.4 поня́ть（СВ）</h3>
+<p>я пойму́ · ты поймёшь · они́ пойму́т · Пойми́(те)!  </p>
+<h3 id="215">21.5 рассказа́ть / пока́зывать 等</h3>
+<p><strong>рассказа́ть</strong> / <strong>пока́зывать–показа́ть</strong>：что? (4) кому́? (3)<br />
+я пока́зываю / покажу́ · ты пока́зываешь / пока́жешь · … · Покажи́!  </p>
+<p><strong>найти́</strong>：я найду́ · ты найдёшь · они́ найду́т · Найди́(те)!<br />
+<strong>купи́ть</strong>：я куплю́ · ты ку́пишь · они́ ку́пят · Купи́(те)!（п → пл）<br />
+<strong>пригласи́ть</strong>：я приглашу́ · ты пригласи́шь · они́ приглася́т<br />
+<strong>написа́ть</strong>：я напишу́ · ты напи́шешь · они́ напи́шут  </p>
+<h3 id="216">21.6 идти́ / е́хать / жить</h3>
+<p>见第 14、9 节。  </p>
+<hr /></section>
+  </main>
+</div>
+<footer class="site-footer">
+  <p>教材：《В добрый путь!》· 深北莫数理 · 纯静态可搜索笔记</p>
+</footer>
+<script src="../js/search-index.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
