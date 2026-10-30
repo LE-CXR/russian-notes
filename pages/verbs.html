@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1814" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 <title>动词专区 · 俄语语法笔记</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -10,7 +13,10 @@
 <a class="skip-link" href="#main">跳到正文</a>
 <header class="topbar">
   <button type="button" class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">☰</button>
-  <a class="brand" href="../index.html">俄语语法笔记</a>
+  <a class="brand" href="../index.html">
+    <span class="brand-title">俄语语法笔记</span>
+    <span class="brand-sub">В добрый путь! · Часть 2</span>
+  </a>
   <div class="search-wrap">
     <input type="search" id="searchInput" placeholder="搜索中文或俄语…" autocomplete="off" aria-label="搜索笔记">
     <div id="searchResults" class="search-results" hidden></div>
@@ -18,6 +24,7 @@
 </header>
 <div class="layout">
   <aside class="sidebar" id="sidebar">
+    <p class="sidebar-label">章节</p>
     <nav class="nav" aria-label="章节导航">
 <a class="nav-link " href="../index.html">首页</a>
 <a class="nav-link nav-star active" href="verbs.html">动词专区 ★</a>
@@ -51,6 +58,7 @@
   <a href="#aspect">体：НСВ / СВ</a>
   <a href="#aspect-pairs">常用体对表</a>
   <a href="#special-conj">特殊变位</a>
+  <a href="#transitive-check">及物 / 不及物判断</a>
   <a href="#case-gov">动词→几格支配</a>
   <a href="#dative-vs-accusative">三格 vs 四格速记</a>
 </nav>
@@ -84,6 +92,7 @@
     </div>
   </div>
   <h3>何时用哪个？</h3>
+  <div class="table-scroll">
   <table>
     <thead><tr><th>情境</th><th>用哪个体</th><th>例</th></tr></thead>
     <tbody>
@@ -97,6 +106,7 @@
       <tr><td>否定：别做成某结果（警告）</td><td class="tag-sv">СВ</td><td class="ru">Смотри́, не упади́!</td></tr>
     </tbody>
   </table>
+  </div>
 </section>
 
 <section class="card" id="aspect-pairs" data-searchable>
@@ -235,9 +245,63 @@
   <p><strong>уметь</strong>：掌握技能（会做某事），与 мочь 区分记。</p>
 </section>
 
+
+<section class="card callout" id="transitive-check" data-searchable>
+  <h2>怎么判断及物 / 不及物</h2>
+  <p>别死记「及物=永远四格」。先问：这个动词后面能不能直接接<strong> кого́? / что?</strong>（把谁 / 把什么）。能接，多半是及物；不能，就看它固定支配几格。</p>
+  <div class="checklist">
+    <p class="step-q">10 秒清单</p>
+    <ol>
+      <li>能不能问 <span class="ru">кого́? что?</span>？能 → 通常<strong>及物 + 四格</strong>（如 <span class="ru">чита́ть кни́гу</span>）。</li>
+      <li>问不了「把谁/把什么」，却能问 <span class="ru">кому́?</span> / <span class="ru">с кем?</span> / <span class="ru">где?</span> → <strong>不及物或固定支配</strong>，跟动词走。</li>
+      <li>查一眼例外表（下面）：否定、帮助、从事……经常不是四格。</li>
+    </ol>
+  </div>
+  <h3>常见例外（不是「永远四格」）</h3>
+  <div class="table-scroll">
+  <table class="gov-table">
+    <thead><tr><th>情况</th><th>几格</th><th>例</th><th>记住</th></tr></thead>
+    <tbody>
+      <tr class="case-3">
+        <td>动词固定 + 三格</td>
+        <td><span class="badge b3">3</span></td>
+        <td class="ru">помога́ть <b>дру́гу</b> · звони́ть <b>ма́ме</b></td>
+        <td>帮助 / 打电话 → кому́?</td>
+      </tr>
+      <tr class="case-5">
+        <td>动词固定 + 五格</td>
+        <td><span class="badge b5">5</span></td>
+        <td class="ru">занима́ться <b>спо́ртом</b> · встреча́ться с <b>дру́гом</b></td>
+        <td>从事 / 与谁 → чем? / с кем?</td>
+      </tr>
+      <tr class="case-2">
+        <td>否定「没有」</td>
+        <td><span class="badge b2">2</span></td>
+        <td class="ru">Нет <b>вре́мени</b>. · У меня́ нет <b>кни́ги</b>.</td>
+        <td>нет / не́ было → 二格</td>
+      </tr>
+      <tr class="case-4">
+        <td>典型及物</td>
+        <td><span class="badge b4">4</span></td>
+        <td class="ru">ви́деть <b>сестру́</b> · люби́ть <b>му́зыку</b></td>
+        <td>кого́? что? → 四格</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="tip"><strong>口诀：</strong>先问 кого́?/что?；问不通就查支配；否定有/没有优先想二格。</p>
+</section>
+
 <section class="card" id="case-gov" data-searchable>
   <h2>动词 → 几格支配表</h2>
   <p>列：动词｜几格｜提问词｜例句｜中文。彩色标签标出格。</p>
+  <div class="case-legend" aria-label="格颜色图例">
+    <span class="case-chip c2"><span class="dot"></span>二格</span>
+    <span class="case-chip c3"><span class="dot"></span>三格</span>
+    <span class="case-chip c4"><span class="dot"></span>四格</span>
+    <span class="case-chip c5"><span class="dot"></span>五格</span>
+    <span class="case-chip c6"><span class="dot"></span>六格</span>
+  </div>
   <div class="table-scroll">
   <table class="gov-table">
     <thead>
@@ -424,7 +488,7 @@
   <p class="tip"><strong>双支配口诀：</strong>把什么（四格）给谁（三格）—— дать / показа́ть / рассказа́ть / бро́сить。</p>
   <p class="tip"><strong>二格高频：</strong>у кого́? · нет + 2 · из/с + 2（откуда）· без / по́сле + 2。</p>
 </section>
-<section class="card muted" id="orig-19" data-searchable><h2>原笔记 · 19. мочь / смочь、уметь</h2><table>
+<section class="card muted" id="orig-19" data-searchable><h2>原笔记 · 19. мочь / смочь、уметь</h2><div class="table-scroll"><table>
 <thead>
 <tr>
 <th></th>
@@ -449,11 +513,11 @@
 <td>смог прочита́ть / смогла́ написа́ть</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>уметь</strong>：会（掌握某种技能）——笔记旁注「能/会」，与 мочь 区分记忆。  </p>
 <p>（笔记未系统展开 надо / ну́жно / мо́жно；此处不扩写。）</p>
 <hr /></section>
-<section class="card muted" id="orig-20" data-searchable><h2>原笔记 · 20. 体对（НСВ / СВ）</h2><table>
+<section class="card muted" id="orig-20" data-searchable><h2>原笔记 · 20. 体对（НСВ / СВ）</h2><div class="table-scroll"><table>
 <thead>
 <tr>
 <th>НСВ 未完成（过程、重复）</th>
@@ -638,7 +702,7 @@
 <td>帮助</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr /></section>
 <section class="card muted" id="orig-21" data-searchable><h2>原笔记 · 21. 不规则与特殊变位动词</h2><h3 id="211">21.1 第一变位 / 第二变位示例</h3>
 <p><strong>понима́ть I</strong><br />
@@ -659,7 +723,7 @@
 <p>я хочу́ · ты хо́чешь · он/она́ хо́чет · мы хоти́м · вы хоти́те · они́ хотя́т<br />
 过去：хоте́л / -а / -и  </p>
 <h3 id="213">21.3 дать / дава́ть</h3>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th></th>
@@ -699,7 +763,7 @@
 <td>даду́т</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>命令式：Дай! / Да́йте!</p>
 <h3 id="214">21.4 поня́ть（СВ）</h3>
 <p>я пойму́ · ты поймёшь · они́ пойму́т · Пойми́(те)!  </p>
@@ -716,7 +780,7 @@
   </main>
 </div>
 <footer class="site-footer">
-  <p>教材：《В добрый путь!》· 深北莫数理 · 纯静态可搜索笔记</p>
+  <p>教材：<span class="ru">《В добрый путь!》</span> Часть 2 · 深北莫数理 · 纯静态可搜索笔记</p>
 </footer>
 <script src="../js/search-index.js"></script>
 <script src="../js/main.js"></script>
