@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1814" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 <title>代词 · 俄语语法笔记</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -10,7 +13,10 @@
 <a class="skip-link" href="#main">跳到正文</a>
 <header class="topbar">
   <button type="button" class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">☰</button>
-  <a class="brand" href="../index.html">俄语语法笔记</a>
+  <a class="brand" href="../index.html">
+    <span class="brand-title">俄语语法笔记</span>
+    <span class="brand-sub">В добрый путь! · Часть 2</span>
+  </a>
   <div class="search-wrap">
     <input type="search" id="searchInput" placeholder="搜索中文或俄语…" autocomplete="off" aria-label="搜索笔记">
     <div id="searchResults" class="search-results" hidden></div>
@@ -18,6 +24,7 @@
 </header>
 <div class="layout">
   <aside class="sidebar" id="sidebar">
+    <p class="sidebar-label">章节</p>
     <nav class="nav" aria-label="章节导航">
 <a class="nav-link " href="../index.html">首页</a>
 <a class="nav-link nav-star " href="verbs.html">动词专区 ★</a>
@@ -40,7 +47,7 @@
   <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
   <main class="main" id="main">
     <p class="crumbs"><a href="../index.html">首页</a> / 代词</p>
-    <section class="card" id="sec-2" data-searchable><h1>2. 人称代词各格</h1><table>
+    <section class="card" id="sec-2" data-searchable><h1>2. 人称代词各格</h1><div class="table-scroll"><table>
 <thead>
 <tr>
 <th>一格</th>
@@ -109,12 +116,12 @@
 <td>о них</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>* 前置词后，第三人称代词前加 <strong>н-</strong>：у <strong>него́</strong>, у <strong>неё</strong>, у <strong>них</strong>；о <strong>нём</strong>, о <strong>ней</strong>, о <strong>них</strong>。</p>
 <p><strong>一格基本义：</strong> я 我 · он 他 · она́ 她 · оно́ 它 · они́ 他们/她们/它们。</p>
 <hr /></section>
 <section class="card" id="sec-3" data-searchable><h1>3. 物主代词与 чей</h1><h3 id="31">3.1 物主代词（随被修饰名词的性、数变化）</h3>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>中文</th>
@@ -175,12 +182,12 @@
 <td>их</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>его́ / её / их <strong>不随</strong>后面名词变格词尾（本身不变性数）。</p>
 </blockquote>
 <h3 id="32">3.2 «谁的» чей</h3>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>阳</th>
@@ -197,13 +204,13 @@
 <td>чьи</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>例句：Чей э́то …?（这是谁的……？）</p>
 <hr /></section>
   </main>
 </div>
 <footer class="site-footer">
-  <p>教材：《В добрый путь!》· 深北莫数理 · 纯静态可搜索笔记</p>
+  <p>教材：<span class="ru">《В добрый путь!》</span> Часть 2 · 深北莫数理 · 纯静态可搜索笔记</p>
 </footer>
 <script src="../js/search-index.js"></script>
 <script src="../js/main.js"></script>
