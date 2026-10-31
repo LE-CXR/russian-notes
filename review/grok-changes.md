@@ -9,7 +9,7 @@ Waiting for **Codex Russian review** and **web QA** before merge.
 | # | Requirement | What we did |
 |---|-------------|-------------|
 | 1 | `перево́дить` → `переводи́ть` | Updated imperfective infinitive in `pages/verbs.html` (体对表、原笔记体对表、格支配语境), `pages/case-endings.html`, `pages/verb-gov.html`, `pages/vocab.html`. Present forms `перево́дишь` / `перево́дят` kept on new conjugation table. |
-| 2 | `пишу́ письма́` → `пишú пи́сьма` | Fixed example in `pages/verbs.html` (НСВ habit sentence). |
+| 2 | `пишу́ письма́` → `пишу́ пи́сьма` | Fixed example in `pages/verbs.html` (НСВ habit sentence). |
 | 3 | Genitive `письмо́` → `письма́` | Fixed 二格单数 example in `pages/case-endings.html` (`письмо́ → письма́`; plural `пи́сьма` / `пи́сем` unchanged). |
 | 4 | `нравиться` plural | Filled нравиться column on `pages/nravitsya.html`: «Мне нра́вятся э́ти пе́сни / фи́льмы / зда́ния.» |
 | 5 | Урок 14 homework verbs (6 persons) | Added block `#conj-lesson14` on `pages/verbs.html` with full tables for **пригласи́ть**, **перевести́** (+ **переводи́ть** present), **найти́**; **поня́ть** and **смочь** already in `#conj-ponyat` / `#conj-moch`. Expanded §21.4–21.5 in same file. |
