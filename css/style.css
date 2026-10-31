@@ -648,9 +648,25 @@ mark.temp-hl {
   .card { padding: 1rem .95rem 1.1rem; border-radius: 12px; }
   table { font-size: .86rem; min-width: 400px; }
   th, td { padding: .45rem .55rem; }
-  .topbar { padding-right: .55rem; }
+  .topbar { padding-right: .55rem; max-width: 100vw; }
+  .layout { max-width: 100%; overflow-x: clip; }
+  .search-wrap { min-width: 0; }
   #searchInput { padding-left: 2.15rem; font-size: 16px; /* avoid iOS zoom */ }
   .tile { min-height: 88px; padding: .85rem .8rem; }
+}
+
+/* Narrow phones (~390px): contain table scroll inside cards */
+@media (max-width: 430px) {
+  body { overflow-x: hidden; }
+  .main, .card, .table-scroll { max-width: 100%; }
+  .table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-scroll table { min-width: min(100%, 320px); }
+  table { min-width: 0; }
+  .card .table-scroll table { min-width: 300px; }
 }
 
 /* Print */
