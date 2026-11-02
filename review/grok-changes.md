@@ -96,5 +96,10 @@ Waiting for **Codex Russian review** and **web QA** before merge.
 ### Verification
 - Search index: **болеть** / **болит** / **生病** / **疼** return hits; anchor **`conj-bolet`** indexed.
 
+### Cyrillic audit (follow-up)
+- Scanned `pages/verbs.html` and `js/search-index.js` for tokens mixing Latin and Cyrillic (including homoglyphs in `#conj-bolet`): **no issues in repo**.
+- On-disk forms are pure Cyrillic: **гри́ппом**, **боли́т**, **боля́т**, **голова́**, **зу́бы**.
+- Mixed Latin/Cyrillic in an earlier **agent chat summary** was not present in committed HTML/JS. Re-ran `python3 _build.py` (110 entries, unchanged).
+
 ### Status (unchanged)
 **Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
