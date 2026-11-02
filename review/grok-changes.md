@@ -67,3 +67,19 @@ Waiting for **Codex Russian review** and **web QA** before merge.
 
 ### Status (unchanged)
 **Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
+
+---
+
+## Round 1c — `есть` / `съесть` · `пить` / `вы́пить` (2026-11-02)
+
+### Change
+- Added **`#conj-est`** and **`#conj-pit`** under「特殊变位表」on `pages/verbs.html` (same pattern as `#conj-gotovit`): full present/future tables, past & imperative lines, Chinese notes (е-/ед-；别和「有」的 есть 混；и→ь、вы́- 写 е；四格/二格), and learner examples.
+- `toc-local`: **есть · 吃** → `#conj-est`, **пить · 喝** → `#conj-pit`.
+- 体对表 remarks point to the new anchors.
+- `_build.py` search extras updated; `python3 _build.py` regenerates index.
+
+### Verification
+- Search index spot-check: **есть** / **ем** / **吃** and **пить** / **пью** / **喝** return hits; dedicated entries for anchors **`conj-est`**, **`conj-pit`**.
+
+### Status (unchanged)
+**Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
