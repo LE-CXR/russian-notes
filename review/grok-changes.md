@@ -83,3 +83,18 @@ Waiting for **Codex Russian review** and **web QA** before merge.
 
 ### Status (unchanged)
 **Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
+
+---
+
+## Round 1d — `боле́ть`（生病 / 疼）(2026-11-02)
+
+### Change
+- Added **`#conj-bolet`** under「特殊变位表」on `pages/verbs.html`: (1) illness/fandom **I** conjugation боле́ю…боле́ют + **творительный** / **за + 4** examples; (2) pain **II** **боли́т / боля́т** + **у + 2** examples; shared past; Chinese tip distinguishing the two.
+- `toc-local`: **болеть · 生病/疼** → `#conj-bolet`.
+- `_build.py` extras updated; `python3 _build.py` regenerates index.
+
+### Verification
+- Search index: **болеть** / **болит** / **生病** / **疼** return hits; anchor **`conj-bolet`** indexed.
+
+### Status (unchanged)
+**Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
