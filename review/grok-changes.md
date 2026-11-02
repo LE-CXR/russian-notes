@@ -51,3 +51,19 @@ Waiting for **Codex Russian review** and **web QA** before merge.
 ## Status
 
 **Waiting for Codex Russian review + QA** — do not merge until those pass.
+
+---
+
+## Round 1b — `гото́вить` / `пригото́вить` conjugation (2026-11-02)
+
+### Change
+- Added **`#conj-gotovit`** under「特殊变位表」on `pages/verbs.html`: six-person **гото́вить** (present + past note), **пригото́вить** (СВ future), and **купи́ть** comparison row; Chinese note on **л**-insertion (like **куплю́**); examples «Я гото́влю у́жин.» / «За́втра я пригото́влю торт.»
+- In-page nav (`toc-local`): link **готовить · 准备** → `#conj-gotovit`.
+- 体对表 remark points to `#conj-gotovit`; §21.5 expanded **купи́ть** (full 6) + **гото́вить** line.
+- `_build.py` extras + `python3 _build.py` → **107** index entries; anchor **`conj-gotovit`** indexed.
+
+### Verification
+- Search index: **готов** / **готовлю** / **准备** return hits (including `#conj-gotovit` title «гото́вить / пригото́вить — 准备、做饭»).
+
+### Status (unchanged)
+**Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
