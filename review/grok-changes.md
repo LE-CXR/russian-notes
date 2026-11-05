@@ -185,3 +185,17 @@ Branch: `grok/case-endings-nom-plural` → `main`（squash merge）。
 - **`index.html`**：磁贴「4–9 · 一格复 + 二～六格」。
 - **`pages/case-usage.html`**：总览「词尾」列一格 → `case-endings.html#sec-4`。
 - **`_build.py`** + **`js/search-index.js`**（134 entries）。
+
+---
+
+## Round 7 — 点词翻译：无词条保持纯文本（2026-11-05）
+
+Branch: `grok/gloss-dict-only` → `main`.
+
+### Change
+- **`js/gloss.js`**：`ru-zh.json` 加载后再 walk；**仅** `lookup` 有释义时包 `button.ru-gloss`；无词条保持文本（可右键翻译）；移除「暂无词条」浮层。
+- **`_build_dict.py`**：表格末列中文、动词支配表等抽取；**`js/ru-zh.json`** ≈ **1049** 词条。
+- **`css/style.css`**：删除 `.gloss-miss` 样式。
+
+### Verification
+- 有释义词仍可点击出中文；无释义词无虚线 button、无空 popover。

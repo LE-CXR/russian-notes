@@ -115,6 +115,44 @@ def extract_gov_table(html: str, d: dict[str, str]) -> None:
                 add_entry(d, lemma, zh)
 
 
+def extract_table_last_zh(html: str, d: dict[str, str]) -> None:
+    """Rows whose last cell is a short Chinese gloss (e.g. irregular plural tables)."""
+    for row in re.finditer(r"<tr\b[^>]*>(.*?)</tr>", html, re.I | re.S):
+        cells = [
+            strip_tags(c)
+            for c in re.findall(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", row.group(1), re.I | re.S)
+        ]
+        if len(cells) < 2 or len(cells) > 5:
+            continue
+        zh = cells[-1].split("·")[0].strip()
+        if not re.search(r"[\u4e00-\u9fff]", zh) or re.search(r"[А-Яа-яЁё]", zh):
+            continue
+        if len(zh) > 28:
+            continue
+        if len(zh) < 2 or zh in ("例", "义", "中文", "备注", "跳转", "说明", "格", "性"):
+            continue
+        for cell in cells[:-1]:
+            if not re.search(r"[А-Яа-яЁё]", cell):
+                continue
+            for lemma in split_ru_lemmas(cell):
+                add_entry(d, lemma, zh)
+
+
+def extract_verb_gov_rows(html: str, d: dict[str, str]) -> None:
+    for row in re.finditer(r"<tr\b[^>]*>(.*?)</tr>", html, re.I | re.S):
+        cells = [strip_tags(c) for c in re.findall(r"<td\b[^>]*>(.*?)</td>", row.group(1), re.I | re.S)]
+        if len(cells) < 4:
+            continue
+        zh = cells[-1]
+        if not re.search(r"[\u4e00-\u9fff]", zh) or len(zh) > 50:
+            continue
+        ru_blob = cells[0]
+        if re.search(r"[\u4e00-\u9fff]", ru_blob) and not re.search(r"[А-Яа-яЁё]", ru_blob):
+            continue
+        for lemma in split_ru_lemmas(ru_blob):
+            add_entry(d, lemma, zh.split("·")[0].strip(), force=True)
+
+
 def strip_tags(html: str) -> str:
     html = re.sub(r"<[^>]+>", " ", html)
     return re.sub(r"\s+", " ", unescape(html)).strip()
@@ -168,6 +206,15 @@ MANUAL: dict[str, str] = {
     "поступим": "我们将进入",
     "поступите": "你们将进入",
     "поступят": "他们将进入",
+    "газ": "气体；气泡",
+    "газом": "带气（五格）",
+    "газа": "气（二格）",
+    "сахар": "糖",
+    "сахаром": "加糖（五格）",
+    "сахара": "糖（二格）",
+    "молоко": "牛奶",
+    "молоком": "加奶（五格）",
+    "молока": "牛奶（二格）",
 }
 
 
@@ -177,8 +224,11 @@ def build_dict() -> dict[str, str]:
         raw = html_file.read_text(encoding="utf-8")
         extract_vocab_lists(raw, d)
         extract_ru_zh_inline(raw, d)
+        extract_table_last_zh(raw, d)
         if html_file.name == "verbs.html":
             extract_aspect_pairs(raw, d)
+        if html_file.name == "verb-gov.html":
+            extract_verb_gov_rows(raw, d)
     return dict(sorted(d.items(), key=lambda x: x[0]))
 
 
