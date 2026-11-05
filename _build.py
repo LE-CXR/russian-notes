@@ -32,7 +32,14 @@ EXTRA_TEXT: dict[tuple[str, str], str] = {
         "дать помогать звонить нравиться нравятся видеть любить "
         "спросить читать ждать подождать кого у нет из переводи́ть"
     ),
-    ("index.html", "how-to-use"): "搜索 菜单 动词专区",
+    ("index.html", "how-to-use"): "搜索 菜单 动词专区 格的用法",
+    ("pages/case-usage.html", "case-usage-overview"): "格的用法 二格 三格 四格 五格 六格 кем нет",
+    ("pages/case-usage.html", "usage-gen"): "нет времени денег после без из с количество",
+    ("pages/case-usage.html", "usage-ins"): "кем стать с кем советоваться",
+    ("pages/vocab.html", "vocab-supplement"): (
+        "поступить одевать одеться надевать снимать кровать товарищ нужен недавно "
+        "негде некогда напрокат одежда"
+    ),
 }
 
 EXTRA_TEXT[("pages/verbs.html", "special-conj")] = (
@@ -42,6 +49,7 @@ EXTRA_TEXT[("pages/verbs.html", "special-conj")] = (
     .replace("приглашu", "приглашу")
     .replace("переведu", "переведу")
     .replace("найdu", "найду")
+    + " conj-sovetovatsya conj-brat-vzyat conj-postupit возьму напрокат советоваться поступить"
 )
 
 

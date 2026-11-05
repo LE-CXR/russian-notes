@@ -103,3 +103,22 @@ Waiting for **Codex Russian review** and **web QA** before merge.
 
 ### Status (unchanged)
 **Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
+
+---
+
+## Round 2 — 「格的用法」专页 + 缺词 / 变位（2026-11-05）
+
+### Change
+- **New** `pages/case-usage.html`：六格何时用、方向三角（куда/где/откуда/к кому）、笔记 p-07～p-10 例句；链到 `cases-ask.html`、`case-endings.html`、`verb-gov.html`、`motion.html` 等，不重复词尾表。
+- **Nav**：侧栏（全部页面 + `index.html`）与首页 tile「格的用法」。
+- **`pages/verbs.html`**：`#conj-sovetovatsya`、`#conj-brat-vzyat`、`#conj-postupit`；体对表补 `поступа́ть/поступи́ть`、`брать/взять` 锚点；`toc-local` 链接。
+- **`pages/vocab.html`**：`#vocab-supplement`（одевать/надевать、кровать、товарищ、нужен…、副词、не́где/не́когда 等）；Урок 13 `брать` 链变位；主题速查补词。
+- **`_build.py`**：case-usage / vocab-supplement / special-conj 搜索 extras；`python3 _build.py` → **126** index entries.
+
+### Verification
+- Mixed Latin/Cyrillic scan on `*.html` `class="ru"` spans: **0** issues.
+- Search spot-check：`格的用法` → `case-usage-overview`；`кем` / `нет` / `поступ` / `напрокат` — hits.
+- **Not merged** to `main`.
+
+### Status (unchanged)
+**Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
