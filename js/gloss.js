@@ -1,0 +1,253 @@
+(function () {
+  "use strict";
+
+  var dict = null;
+  var popover = null;
+  var openBtn = null;
+
+  var WORD_RE = /(?:[А-Яа-яЁё]\u0301?)+(?:-[А-Яа-яЁё]\u0301?)*/g;
+
+  var SKIP_ANCESTOR =
+    ".search-wrap, .sidebar, .topbar, .skip-link, .site-footer, " +
+    ".grid, .hero-actions, .crumbs, .gloss-popover, code, button.search-hit, a.tile";
+
+  function pathPrefix() {
+    var path = location.pathname.replace(/\\/g, "/");
+    if (path.endsWith("/") || /\/index\.html$/i.test(path) || !/\/pages\//i.test(path)) {
+      return "";
+    }
+    return "../";
+  }
+
+  function normKey(word) {
+    return word
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/ё/g, "е");
+  }
+
+  function lookup(word) {
+    if (!dict) return { gloss: null, lemma: normKey(word) };
+    var key = normKey(word);
+    if (dict[key]) return { gloss: dict[key], lemma: key, matched: key };
+
+    var tries = [];
+    if (/[ь]?ся$/.test(key)) {
+      tries.push(key.replace(/ться$/, "ть"));
+      tries.push(key.replace(/ться$/, ""));
+      tries.push(key.replace(/сь$/, ""));
+    }
+    if (key.endsWith("й") && key.length > 3) tries.push(key.slice(0, -1) + "ить");
+    if (key.endsWith("ит") && key.length > 4) tries.push(key.slice(0, -2) + "еть");
+    if (key.endsWith("ит") && key.length > 4) tries.push(key.slice(0, -2) + "ать");
+    if (key.endsWith("ю")) {
+      var stemU = key.slice(0, -1);
+      tries.push(stemU + "ть");
+      tries.push(stemU + "ти");
+      if (stemU.endsWith("а")) tries.push(stemU.slice(0, -1) + "ать");
+      if (stemU.endsWith("ш")) tries.push(stemU.slice(0, -1) + "сать");
+      if (stemU.endsWith("ж")) tries.push(stemU.slice(0, -1) + "зать");
+    }
+    if (key.endsWith("л") && key.length > 4) {
+      tries.push(key.slice(0, -1) + "ть");
+      tries.push(key.slice(0, -1) + "ти");
+    }
+
+    var suffixes = [
+      "ами", "ями", "ах", "ях", "ами", "ями", "ов", "ев", "ей", "ам", "ям",
+      "ом", "ем", "ём", "ой", "ей", "ую", "юю", "ые", "ие", "ий", "ый", "ая",
+      "ое", "ee", "ии", "ью", "ов", "ев", "ах", "ях", "и", "ы", "у", "ю", "е",
+      "а", "я", "о",
+    ];
+    for (var s = 0; s < suffixes.length; s++) {
+      var suf = suffixes[s];
+      if (key.length > suf.length + 2 && key.endsWith(suf)) {
+        tries.push(key.slice(0, -suf.length));
+      }
+    }
+
+    for (var i = 0; i < tries.length; i++) {
+      var t = tries[i];
+      if (dict[t]) return { gloss: dict[t], lemma: t, matched: t };
+      if (dict[t + "ть"]) return { gloss: dict[t + "ть"], lemma: t + "ть", matched: t + "ть" };
+      if (dict[t + "ти"]) return { gloss: dict[t + "ти"], lemma: t + "ти", matched: t + "ти" };
+    }
+    return { gloss: null, lemma: key, matched: null };
+  }
+
+  function shouldSkipNode(node) {
+    var el = node.parentElement;
+    while (el) {
+      if (el.matches && el.matches(SKIP_ANCESTOR)) return true;
+      if (el.classList && el.classList.contains("ru-gloss")) return true;
+      var tag = el.tagName;
+      if (/^(SCRIPT|STYLE|MARK|CODE|BUTTON|A)$/i.test(tag)) return true;
+      if (el.id === "searchResults") return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+
+  function wrapTextNode(node) {
+    if (shouldSkipNode(node)) return;
+    var text = node.nodeValue;
+    if (!text || !/[А-Яа-яЁё]/.test(text)) return;
+
+    WORD_RE.lastIndex = 0;
+    if (!WORD_RE.test(text)) return;
+    WORD_RE.lastIndex = 0;
+
+    var frag = document.createDocumentFragment();
+    var last = 0;
+    var m;
+    while ((m = WORD_RE.exec(text))) {
+      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "ru-gloss";
+      btn.textContent = m[0];
+      btn.setAttribute("lang", "ru");
+      btn.setAttribute("aria-label", "显示释义");
+      frag.appendChild(btn);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    node.parentNode.replaceChild(frag, node);
+  }
+
+  function walkMain() {
+    var main = document.getElementById("main");
+    if (!main) return;
+    var walk = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, null);
+    var nodes = [];
+    while (walk.nextNode()) nodes.push(walk.currentNode);
+    nodes.forEach(wrapTextNode);
+  }
+
+  function ensurePopover() {
+    if (popover) return popover;
+    popover = document.createElement("div");
+    popover.className = "gloss-popover";
+    popover.hidden = true;
+    popover.setAttribute("role", "tooltip");
+    popover.innerHTML =
+      '<p class="gloss-ru"></p><p class="gloss-zh"></p><p class="gloss-miss" hidden>暂无词条</p>';
+    document.body.appendChild(popover);
+    return popover;
+  }
+
+  function closePopover() {
+    if (!popover) return;
+    popover.hidden = true;
+    if (openBtn) {
+      openBtn.classList.remove("is-open");
+      openBtn = null;
+    }
+  }
+
+  function placePopover(btn) {
+    var pop = ensurePopover();
+    pop.hidden = false;
+    var rect = btn.getBoundingClientRect();
+    var margin = 8;
+    pop.style.left = "0px";
+    pop.style.top = "0px";
+    var pw = pop.offsetWidth;
+    var ph = pop.offsetHeight;
+    var left = rect.left + rect.width / 2 - pw / 2;
+    left = Math.max(margin, Math.min(left, window.innerWidth - pw - margin));
+    var top = rect.bottom + margin;
+    if (top + ph > window.innerHeight - margin) {
+      top = rect.top - ph - margin;
+    }
+    pop.style.left = left + window.scrollX + "px";
+    pop.style.top = top + window.scrollY + "px";
+  }
+
+  function showGloss(btn) {
+    var word = btn.textContent || "";
+    var hit = lookup(word);
+    var pop = ensurePopover();
+    pop.querySelector(".gloss-ru").textContent = word;
+    var zhEl = pop.querySelector(".gloss-zh");
+    var missEl = pop.querySelector(".gloss-miss");
+    if (hit.gloss) {
+      zhEl.hidden = false;
+      zhEl.textContent = hit.gloss;
+      missEl.hidden = true;
+    } else {
+      zhEl.hidden = true;
+      missEl.hidden = false;
+      missEl.textContent = hit.lemma + " · 暂无词条";
+    }
+    if (openBtn && openBtn !== btn) openBtn.classList.remove("is-open");
+    openBtn = btn;
+    btn.classList.add("is-open");
+    placePopover(btn);
+  }
+
+  function onDocClick(ev) {
+    if (ev.target.closest(".ru-gloss")) return;
+    if (ev.target.closest(".gloss-popover")) return;
+    closePopover();
+  }
+
+  function initInteraction() {
+    document.addEventListener("click", onDocClick);
+    document.addEventListener(
+      "click",
+      function (ev) {
+        var btn = ev.target.closest(".ru-gloss");
+        if (!btn) return;
+        ev.preventDefault();
+        ev.stopPropagation();
+        if (openBtn === btn && popover && !popover.hidden) {
+          closePopover();
+          return;
+        }
+        showGloss(btn);
+      },
+      true
+    );
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") closePopover();
+    });
+    window.addEventListener(
+      "resize",
+      function () {
+        if (openBtn && popover && !popover.hidden) placePopover(openBtn);
+      },
+      { passive: true }
+    );
+  }
+
+  function loadDict() {
+    var url = pathPrefix() + "js/ru-zh.json";
+    return fetch(url)
+      .then(function (r) {
+        if (!r.ok) throw new Error("dict");
+        return r.json();
+      })
+      .then(function (data) {
+        dict = data;
+      });
+  }
+
+  function boot() {
+    initInteraction();
+    loadDict()
+      .catch(function () {
+        dict = {};
+      })
+      .then(function () {
+        walkMain();
+      });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
