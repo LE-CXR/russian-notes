@@ -173,3 +173,15 @@ Branch: `grok/bez-genitive-fix` → `main`.
 - **`pages/case-usage.html`**：总览五格行去掉 `с/без`；二格行标明 **без 只接二格**；`#usage-ins` 仅 `с + 5`，`без` 链二格；`#mod-s-bez` 强调 **без 永远 + 二格**；速记表「不带 → без + 二格」。
 - **`pages/prepositions.html`**、**`pages/appendix.html`**：同样区分 `с` / `без`。
 - **`python3 _build.py`** — search index refresh.
+
+---
+
+## Round 6 — 各格词尾页补「4. 一格复数」（2026-11-05）
+
+Branch: `grok/case-endings-nom-plural` → `main`（squash merge）。
+
+### Change
+- **`pages/case-endings.html`**：页首新增 `#sec-4`（4.1 规则词尾、拼写口诀、4.2 不规则）；链到 `noun-plural.html#43`。
+- **`index.html`**：磁贴「4–9 · 一格复 + 二～六格」。
+- **`pages/case-usage.html`**：总览「词尾」列一格 → `case-endings.html#sec-4`。
+- **`_build.py`** + **`js/search-index.js`**（134 entries）。
