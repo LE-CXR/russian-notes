@@ -147,3 +147,18 @@ Branch: `grok/click-gloss` → `main`.
 
 ### Gaps (sample)
 - 约 645 / 1611 个 distinct 归一化 token 无 direct 词条；变位/格变形式依赖启发式或显示「暂无词条」。可后续从变位表批量写入 `_build_dict.py`。
+
+---
+
+## Round 4 — 名词的说明专节（2026-11-05）
+
+Branch: `grok/noun-modifiers` → `main`.
+
+### Change
+- **`pages/case-usage.html`**：`#noun-modifiers`（с/без、名词+二格、для/от/о/в/у/на、形容词、速记表）；页内 TOC「名词的说明」；五格 `с/без` 链到该节。
+- **`_build.py`**：`noun-modifiers` 搜索 extra；`python3 _build.py` → **131** entries.
+- **`js/search-index.js`**、**`js/ru-zh.json`**  regenerated.
+
+### Verification
+- Search：`名词的说明` / `чашка` / `с газом` — should hit `#noun-modifiers`.
+- Gloss unchanged on new `.ru` spans.

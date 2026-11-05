@@ -35,6 +35,10 @@ EXTRA_TEXT: dict[tuple[str, str], str] = {
     ("index.html", "how-to-use"): "搜索 菜单 动词专区 格的用法",
     ("pages/case-usage.html", "case-usage-overview"): "格的用法 二格 三格 四格 五格 六格 кем нет",
     ("pages/case-usage.html", "usage-gen"): "нет времени денег после без из с количество",
+    ("pages/case-usage.html", "noun-modifiers"): (
+        "名词 说明 限制 的 带着 с 五格 без 二格 所属 内容 部分 чашка чая "
+        "для от о в 穿着 形容词 速记 职业 кем"
+    ),
     ("pages/case-usage.html", "usage-ins"): "кем стать с кем советоваться",
     ("pages/vocab.html", "vocab-supplement"): (
         "поступить одевать одеться надевать снимать кровать товарищ нужен недавно "
