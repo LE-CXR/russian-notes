@@ -6,11 +6,55 @@
   var backdrop = document.getElementById("sidebarBackdrop");
   var input = document.getElementById("searchInput");
   var results = document.getElementById("searchResults");
+  var mobileNav = window.matchMedia("(max-width: 900px)");
+
+  function syncSidebarA11y() {
+    if (!sidebar) return;
+    var open = document.body.classList.contains("nav-open");
+    if (mobileNav.matches) {
+      if (open) {
+        sidebar.removeAttribute("inert");
+        sidebar.setAttribute("aria-hidden", "false");
+      } else {
+        sidebar.setAttribute("inert", "");
+        sidebar.setAttribute("aria-hidden", "true");
+      }
+    } else {
+      sidebar.removeAttribute("inert");
+      sidebar.removeAttribute("aria-hidden");
+    }
+  }
+
+  function setSearchExpanded(open) {
+    if (input) input.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function initSearchA11y() {
+    if (!input) return;
+    input.setAttribute("role", "combobox");
+    input.setAttribute("aria-autocomplete", "list");
+    input.setAttribute("aria-haspopup", "listbox");
+    if (results) {
+      if (!results.id) results.id = "searchResults";
+      input.setAttribute("aria-controls", results.id);
+      results.setAttribute("role", "listbox");
+    }
+    setSearchExpanded(false);
+  }
 
   function setNav(open) {
     document.body.classList.toggle("nav-open", open);
     if (menuToggle) menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
     if (backdrop) backdrop.hidden = !open;
+    syncSidebarA11y();
+  }
+
+  initSearchA11y();
+  syncSidebarA11y();
+  if (typeof mobileNav.addEventListener === "function") {
+    mobileNav.addEventListener("change", syncSidebarA11y);
+  } else if (typeof mobileNav.addListener === "function") {
+    mobileNav.addListener(syncSidebarA11y);
   }
 
   if (menuToggle) {
@@ -106,19 +150,22 @@
     if (!q.trim()) {
       results.hidden = true;
       results.innerHTML = "";
+      setSearchExpanded(false);
       return;
     }
     if (!hits.length) {
       results.hidden = false;
-      results.innerHTML = '<div class="search-empty">没有匹配「' + escapeHtml(q) + '」</div>';
+      setSearchExpanded(true);
+      results.innerHTML = '<div class="search-empty" role="status">没有匹配「' + escapeHtml(q) + '」</div>';
       return;
     }
     results.hidden = false;
+    setSearchExpanded(true);
     results.innerHTML = hits.map(function (e) {
       var href = resolveHref(e);
       var snip = snippetAround(e.text, q, 42);
       return (
-        '<button type="button" class="search-hit" data-href="' + escapeHtml(href) + '">' +
+        '<button type="button" class="search-hit" role="option" data-href="' + escapeHtml(href) + '">' +
           '<span class="hit-title">' + highlightText(e.title, q) + "</span>" +
           '<span class="hit-snip">' + highlightText(snip, q) + "</span>" +
         "</button>"
@@ -168,6 +215,7 @@
 
   function jumpTo(href, query) {
     results.hidden = true;
+    setSearchExpanded(false);
     var hash = "";
     var path = href;
     var hi = href.indexOf("#");
@@ -264,6 +312,7 @@
     input.addEventListener("keydown", function (ev) {
       if (ev.key === "Escape") {
         results.hidden = true;
+        setSearchExpanded(false);
         input.blur();
       }
       if (ev.key === "Enter") {
@@ -288,5 +337,6 @@
     if (!results || results.hidden) return;
     if (ev.target.closest(".search-wrap")) return;
     results.hidden = true;
+    setSearchExpanded(false);
   });
 })();
