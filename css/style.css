@@ -724,11 +724,6 @@ td.ru button.ru-gloss,
   margin: 0;
   color: var(--accent-ink);
 }
-.gloss-popover .gloss-miss {
-  margin: 0;
-  color: var(--muted);
-  font-size: .9rem;
-}
 
 /* Print */
 @media print {

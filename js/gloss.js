@@ -55,10 +55,9 @@
     }
 
     var suffixes = [
-      "ами", "ями", "ах", "ях", "ами", "ями", "ов", "ев", "ей", "ам", "ям",
+      "ами", "ями", "ах", "ях", "ов", "ев", "ей", "ам", "ям",
       "ом", "ем", "ём", "ой", "ей", "ую", "юю", "ые", "ие", "ий", "ый", "ая",
-      "ое", "ee", "ии", "ью", "ов", "ев", "ах", "ях", "и", "ы", "у", "ю", "е",
-      "а", "я", "о",
+      "ое", "ии", "ью", "и", "ы", "у", "ю", "е", "а", "я", "о",
     ];
     for (var s = 0; s < suffixes.length; s++) {
       var suf = suffixes[s];
@@ -101,22 +100,31 @@
     var frag = document.createDocumentFragment();
     var last = 0;
     var m;
+    var changed = false;
     while ((m = WORD_RE.exec(text))) {
       if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "ru-gloss";
-      btn.textContent = m[0];
-      btn.setAttribute("lang", "ru");
-      btn.setAttribute("aria-label", "显示释义");
-      frag.appendChild(btn);
-      last = m.index + m[0].length;
+      var word = m[0];
+      var hit = lookup(word);
+      if (hit.gloss) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ru-gloss";
+        btn.textContent = word;
+        btn.setAttribute("lang", "ru");
+        btn.setAttribute("aria-label", "显示释义：" + hit.gloss.slice(0, 24));
+        frag.appendChild(btn);
+        changed = true;
+      } else {
+        frag.appendChild(document.createTextNode(word));
+      }
+      last = m.index + word.length;
     }
     if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
-    node.parentNode.replaceChild(frag, node);
+    if (changed) node.parentNode.replaceChild(frag, node);
   }
 
   function walkMain() {
+    if (!dict || !Object.keys(dict).length) return;
     var main = document.getElementById("main");
     if (!main) return;
     var walk = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, null);
@@ -131,8 +139,7 @@
     popover.className = "gloss-popover";
     popover.hidden = true;
     popover.setAttribute("role", "tooltip");
-    popover.innerHTML =
-      '<p class="gloss-ru"></p><p class="gloss-zh"></p><p class="gloss-miss" hidden>暂无词条</p>';
+    popover.innerHTML = '<p class="gloss-ru"></p><p class="gloss-zh"></p>';
     document.body.appendChild(popover);
     return popover;
   }
@@ -168,19 +175,13 @@
   function showGloss(btn) {
     var word = btn.textContent || "";
     var hit = lookup(word);
+    if (!hit.gloss) {
+      closePopover();
+      return;
+    }
     var pop = ensurePopover();
     pop.querySelector(".gloss-ru").textContent = word;
-    var zhEl = pop.querySelector(".gloss-zh");
-    var missEl = pop.querySelector(".gloss-miss");
-    if (hit.gloss) {
-      zhEl.hidden = false;
-      zhEl.textContent = hit.gloss;
-      missEl.hidden = true;
-    } else {
-      zhEl.hidden = true;
-      missEl.hidden = false;
-      missEl.textContent = hit.lemma + " · 暂无词条";
-    }
+    pop.querySelector(".gloss-zh").textContent = hit.gloss;
     if (openBtn && openBtn !== btn) openBtn.classList.remove("is-open");
     openBtn = btn;
     btn.classList.add("is-open");
