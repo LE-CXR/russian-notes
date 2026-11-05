@@ -669,6 +669,67 @@ mark.temp-hl {
   .card .table-scroll table { min-width: 300px; }
 }
 
+/* Clickable Russian gloss */
+button.ru-gloss {
+  font: inherit;
+  font-family: var(--font-ru);
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+  padding: 0 .05em;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 1.2em;
+}
+button.ru-gloss:hover,
+button.ru-gloss:focus-visible {
+  background: var(--accent-soft);
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+button.ru-gloss.is-open {
+  background: var(--accent-soft);
+  border-bottom-style: solid;
+}
+td.ru button.ru-gloss,
+.ru button.ru-gloss {
+  font-size: inherit;
+}
+.gloss-popover {
+  position: absolute;
+  z-index: 200;
+  max-width: min(92vw, 320px);
+  padding: .65rem .85rem;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+.gloss-popover .gloss-ru {
+  font-family: var(--font-ru);
+  font-size: 1.05em;
+  margin: 0 0 .35rem;
+  font-weight: 650;
+}
+.gloss-popover .gloss-zh {
+  margin: 0;
+  color: var(--accent-ink);
+}
+.gloss-popover .gloss-miss {
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
 /* Print */
 @media print {
   .topbar, .sidebar, .sidebar-backdrop, .menu-toggle,

@@ -122,3 +122,28 @@ Waiting for **Codex Russian review** and **web QA** before merge.
 
 ### Status (unchanged)
 **Waiting for Codex Russian review + QA** — PR #1 still **not merged**.
+
+---
+
+## Round 3 — 点击俄语词显示中文释义（2026-11-05）
+
+Branch: `grok/click-gloss` → `main`.
+
+### Change
+- **`js/gloss.js`**：在 `#main` 内运行时切分西里尔词为 `button.ru-gloss`；点击弹出释义；Esc / 点外部关闭；跳过侧栏、搜索、章节目录 grid、code、链接等。
+- **`js/ru-zh.json`**：离线 RU→ZH 词典（`python3 _build_dict.py` 从生词表、体对表、笔记 inline「词 中文」等抽取，约 **979** 词条）。
+- **`_build_dict.py`**：词典生成脚本；重音归一化；ё→е。
+- **`css/style.css`**：虚线下划线可点样式 + `.gloss-popover` 纸面风浮层。
+- **全部 17 个 HTML**：在 `main.js` 前引入 `gloss.js`（保留 `search-index.js` 顺序不变）。
+
+### Lookup
+- 先查归一化 surface form，再试简单词尾 / 反身 / 现在时（-ю→-ать 等）启发式。
+- 未命中：浮层显示归一化 lemma + 「暂无词条」。
+
+### Verification
+- 本地 HTTP + 浏览器：`поступи́ть` → 升学；进入；`давать` → 给；交给；Esc / 外部点击关闭。
+- `python3 _build_dict.py` → 979 lemmas；`python3 _build.py` 未改（搜索索引无需重建）。
+- 主内容 `#main` 外 footer `.ru` 不包裹（避免页脚误点）。
+
+### Gaps (sample)
+- 约 645 / 1611 个 distinct 归一化 token 无 direct 词条；变位/格变形式依赖启发式或显示「暂无词条」。可后续从变位表批量写入 `_build_dict.py`。
