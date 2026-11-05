@@ -33,6 +33,7 @@ EXTRA_TEXT: dict[tuple[str, str], str] = {
         "спросить читать ждать подождать кого у нет из переводи́ть"
     ),
     ("index.html", "how-to-use"): "搜索 菜单 动词专区 格的用法",
+    ("pages/case-endings.html", "sec-4"): "一格复数 词尾 4.1 4.2 ж ш ч щ г к х 拼写口诀 不规则",
     ("pages/case-usage.html", "case-usage-overview"): "格的用法 二格 三格 四格 五格 六格 кем нет bez 只接二格",
     ("pages/case-usage.html", "usage-gen"): "нет времени денег после без из с количество",
     ("pages/case-usage.html", "noun-modifiers"): (
