@@ -162,3 +162,14 @@ Branch: `grok/noun-modifiers` → `main`.
 ### Verification
 - Search：`名词的说明` / `чашка` / `с газом` — should hit `#noun-modifiers`.
 - Gloss unchanged on new `.ru` spans.
+
+---
+
+## Round 5 — 纠正 `без` 只接二格（2026-11-05）
+
+Branch: `grok/bez-genitive-fix` → `main`.
+
+### Change
+- **`pages/case-usage.html`**：总览五格行去掉 `с/без`；二格行标明 **без 只接二格**；`#usage-ins` 仅 `с + 5`，`без` 链二格；`#mod-s-bez` 强调 **без 永远 + 二格**；速记表「不带 → без + 二格」。
+- **`pages/prepositions.html`**、**`pages/appendix.html`**：同样区分 `с` / `без`。
+- **`python3 _build.py`** — search index refresh.
