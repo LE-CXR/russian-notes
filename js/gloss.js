@@ -24,7 +24,9 @@
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
-      .replace(/ё/g, "е");
+      .replace(/ё/g, "е")
+      // 词典里的 -ый/-ий 词条统一写成 -ыи/-ии，这里把 й 归一成 и 才能命中
+      .replace(/й/g, "и");
   }
 
   function lookup(word) {
@@ -139,7 +141,11 @@
     popover.className = "gloss-popover";
     popover.hidden = true;
     popover.setAttribute("role", "tooltip");
-    popover.innerHTML = '<p class="gloss-ru"></p><p class="gloss-zh"></p>';
+    popover.innerHTML =
+      '<p class="gloss-ru"></p>' +
+      '<p class="gloss-zh"></p>' +
+      '<p class="gloss-meta"></p>' +
+      '<button type="button" class="gloss-copy">复制词</button>';
     document.body.appendChild(popover);
     return popover;
   }
@@ -182,6 +188,30 @@
     var pop = ensurePopover();
     pop.querySelector(".gloss-ru").textContent = word;
     pop.querySelector(".gloss-zh").textContent = hit.gloss;
+    var meta = pop.querySelector(".gloss-meta");
+    var keyNow = normKey(word);
+    if (hit.matched && hit.matched !== keyNow) {
+      meta.textContent = "原形：" + hit.matched;
+      meta.hidden = false;
+    } else {
+      meta.textContent = "";
+      meta.hidden = true;
+    }
+    var copyBtn = pop.querySelector(".gloss-copy");
+    copyBtn.textContent = "复制词";
+    copyBtn.onclick = function (e) {
+      e.stopPropagation();
+      var text = word;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          copyBtn.textContent = "已复制";
+        }, function () {
+          copyBtn.textContent = "复制失败";
+        });
+      } else {
+        copyBtn.textContent = "请手动选择";
+      }
+    };
     if (openBtn && openBtn !== btn) openBtn.classList.remove("is-open");
     openBtn = btn;
     btn.classList.add("is-open");

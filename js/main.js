@@ -126,6 +126,38 @@
     }
   }
 
+  // ── 中文 → 俄语反查（ru-zh.json 反向搜索）──
+  var zhDict = null;
+  var zhDictLoading = false;
+
+  function loadZhDict() {
+    if (zhDict || zhDictLoading) return;
+    zhDictLoading = true;
+    var url = pathPrefix() + "js/ru-zh.json";
+    fetch(url)
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (data) {
+        zhDict = data;
+        if (input && input.value.trim()) renderResults(input.value);
+      })
+      .catch(function () { zhDict = {}; });
+  }
+
+  function dictSearch(q) {
+    if (!zhDict) { loadZhDict(); return []; }
+    var nq = normalize(q);
+    if (!/[\u4e00-\u9fa5]/.test(nq)) return [];
+    var out = [];
+    for (var ru in zhDict) {
+      if (!Object.prototype.hasOwnProperty.call(zhDict, ru)) continue;
+      var zh = zhDict[ru];
+      if (normalize(zh).indexOf(nq) < 0) continue;
+      out.push({ ru: ru, zh: zh });
+      if (out.length >= 8) break;
+    }
+    return out;
+  }
+
   function search(q) {
     var index = window.SEARCH_INDEX || [];
     q = (q || "").trim();
@@ -147,13 +179,14 @@
   function renderResults(q) {
     if (!results) return;
     var hits = search(q);
+    var dictHits = dictSearch(q);
     if (!q.trim()) {
       results.hidden = true;
       results.innerHTML = "";
       setSearchExpanded(false);
       return;
     }
-    if (!hits.length) {
+    if (!hits.length && !dictHits.length) {
       results.hidden = false;
       setSearchExpanded(true);
       results.innerHTML = '<div class="search-empty" role="status">没有匹配「' + escapeHtml(q) + '」</div>';
@@ -161,7 +194,16 @@
     }
     results.hidden = false;
     setSearchExpanded(true);
-    results.innerHTML = hits.map(function (e) {
+    if (!zhDict) loadZhDict();
+    var dictHtml = dictHits.map(function (d) {
+      return (
+        '<button type="button" class="search-hit search-dict" data-copy="' + escapeHtml(d.ru) + '">' +
+          '<span class="hit-title">' + highlightText(d.ru, "") + '</span>' +
+          '<span class="hit-snip">词义：' + highlightText(d.zh, q) + ' · 点击复制</span>' +
+        "</button>"
+      );
+    }).join("");
+    results.innerHTML = dictHtml + hits.map(function (e) {
       var href = resolveHref(e);
       var snip = snippetAround(e.text, q, 42);
       return (
@@ -329,6 +371,23 @@
     results.addEventListener("click", function (ev) {
       var btn = ev.target.closest(".search-hit");
       if (!btn) return;
+      var copy = btn.getAttribute("data-copy");
+      if (copy) {
+        var snip = btn.querySelector(".hit-snip");
+        var original = snip ? snip.textContent : "";
+        var done = function (ok) {
+          if (snip) snip.textContent = ok ? "已复制：" + copy : "复制失败，请手动选择";
+          setTimeout(function () {
+            if (snip) snip.textContent = original;
+          }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(copy).then(function () { done(true); }, function () { done(false); });
+        } else {
+          done(false);
+        }
+        return;
+      }
       jumpTo(btn.getAttribute("data-href"), (input && input.value.trim()) || "");
     });
   }
