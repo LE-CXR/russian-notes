@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var DICT_VERSION = "2026-11-07a";
+
   var menuToggle = document.getElementById("menuToggle");
   var sidebar = document.getElementById("sidebar");
   var backdrop = document.getElementById("sidebarBackdrop");
@@ -133,7 +135,7 @@
   function loadZhDict() {
     if (zhDict || zhDictLoading) return;
     zhDictLoading = true;
-    var url = pathPrefix() + "js/ru-zh.json";
+    var url = pathPrefix() + "js/ru-zh.json?v=DICT_VERSION";
     fetch(url)
       .then(function (r) { return r.ok ? r.json() : {}; })
       .then(function (data) {

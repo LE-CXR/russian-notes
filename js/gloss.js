@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var DICT_VERSION = "2026-11-07a";
+
   var dict = null;
   var popover = null;
   var openBtn = null;
@@ -275,7 +277,7 @@
   }
 
   function loadDict() {
-    var url = pathPrefix() + "js/ru-zh.json";
+    var url = pathPrefix() + "js/ru-zh.json?v=DICT_VERSION";
     return fetch(url)
       .then(function (r) {
         if (!r.ok) throw new Error("dict");
