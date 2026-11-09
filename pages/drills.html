@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1814" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<title>逐课自测 · 俄语语法笔记</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="">
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="topbar">
+  <button type="button" class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">☰</button>
+  <a class="brand" href="../index.html">
+    <span class="brand-title">俄语语法笔记</span>
+    <span class="brand-sub">В добрый путь! Часть 2 · 走遍俄罗斯 2</span>
+  </a>
+  <div class="search-wrap">
+    <input type="search" id="searchInput" placeholder="搜索中文或俄语…" autocomplete="off" aria-label="搜索笔记">
+    <div id="searchResults" class="search-results" hidden></div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <p class="sidebar-label">章节</p>
+    <nav class="nav" aria-label="章节导航">
+<a class="nav-link " href="../index.html">首页</a>
+<a class="nav-link nav-star active" href="verbs.html">动词专区 ★</a>
+<a class="nav-link " href="doroga-2.html">走遍俄罗斯 2 路线图</a>
+<a class="nav-link " href="cases-ask.html">格与提问词</a>
+<a class="nav-link " href="pronouns.html">代词</a>
+<a class="nav-link " href="noun-plural.html">一格复数</a>
+<a class="nav-link " href="case-endings.html">各格词尾</a>
+<a class="nav-link " href="case-usage.html">格的用法</a>
+<a class="nav-link " href="prepositions.html">前置词</a>
+<a class="nav-link " href="adjectives.html">形容词</a>
+<a class="nav-link " href="nravitsya.html">喜欢 / 有</a>
+<a class="nav-link " href="motion.html">运动与交通</a>
+<a class="nav-link " href="time.html">时间</a>
+<a class="nav-link " href="imperative.html">命令式</a>
+<a class="nav-link " href="verb-gov.html">格支配·社交</a>
+<a class="nav-link " href="tense.html">时态</a>
+<a class="nav-link " href="vocab.html">生词表</a>
+<a class="nav-link active" href="drills.html">逐课自测</a>
+<a class="nav-link " href="appendix.html">附录</a>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+  <main class="main" id="main">
+    <p class="crumbs"><a href="../index.html">首页</a> / 逐课自测</p>
+
+<section class="card" id="drill-intro" data-searchable>
+<h1>逐课自测 · 《走遍俄罗斯》第 2 册</h1>
+<p>每课 8 题，全部指着这一课「那一格」的词尾与支配：第 1 课六格、第 2 课四格、第 3 课二格、第 4 课三格、第 5 课五格、第 6 课复数各格，第 7 课按考卷口径混合。</p>
+<p>点选项立刻判对错，答错会给出讲解，答对也讲为什么。成绩存在浏览器里，关掉再回来还在，随时能清空重来。</p>
+<div class="study-toolbar" id="drillStats"></div>
+<p class="muted">题库在 <code>js/drills.json</code>：要加题，往对应课次的 <code>items</code> 里追加 <code>{q, options, answer, tip}</code> 即可，页面会自动渲染。</p>
+</section>
+
+<div id="drillApp"></div>
+  </main>
+</div>
+<footer class="site-footer">
+  <p>教材：<span class="ru">《В добрый путь!》</span> Часть 2 · 深北莫数理 · 纯静态可搜索笔记</p>
+</footer>
+<script src="../js/search-index.js"></script>
+<script src="../js/gloss.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/drills.js"></script>
+<script src="../js/enhance.js"></script>
+</body>
+</html>

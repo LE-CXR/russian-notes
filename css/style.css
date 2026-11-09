@@ -798,3 +798,52 @@ body.vocab-quiz #main li:hover { background: var(--accent-soft); border-radius: 
 /* 搜索里的词典命中（中文 → 俄语） */
 .search-hit.search-dict { border-left: 3px solid var(--accent); }
 .search-hit.search-dict .hit-snip { color: var(--accent-ink); }
+
+/* ── 逐课自测（drills.js）────────────────────────────── */
+.drill-list { display: flex; flex-direction: column; gap: .85rem; }
+.drill-item {
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: .7rem .8rem .75rem; background: var(--surface-2, var(--surface));
+  transition: border-color .18s, background .18s;
+}
+.drill-item.is-right { border-color: var(--accent); background: var(--accent-soft); }
+.drill-item.is-wrong { border-color: var(--sv); background: var(--sv-soft); }
+.drill-q { margin: 0 0 .55rem; line-height: 1.75; }
+.drill-no { color: var(--muted); font-size: .82rem; margin-right: .2rem; }
+.drill-blank {
+  display: inline-block; min-width: 2.2em; text-align: center;
+  border-bottom: 2px solid var(--accent); color: var(--accent);
+  font-weight: 700; margin: 0 .15em;
+}
+.drill-opts { display: flex; flex-wrap: wrap; gap: .4rem; }
+.drill-opt {
+  font: inherit; font-size: .9rem; cursor: pointer; text-align: left;
+  padding: .35rem .6rem; border-radius: 999px;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+  transition: background .14s, border-color .14s, color .14s;
+}
+.drill-opt:hover { border-color: var(--accent); background: var(--accent-soft); }
+.drill-opt .drill-key {
+  display: inline-block; margin-right: .38em; font-size: .72rem;
+  color: var(--muted); font-variant-numeric: tabular-nums;
+}
+.drill-opt.is-correct {
+  border-color: var(--accent); background: var(--accent); color: #fff;
+}
+.drill-opt.is-correct .drill-key { color: rgba(255,255,255,.75); }
+.drill-opt.is-pick:not(.is-correct) {
+  border-color: var(--sv); background: var(--sv-soft); color: var(--sv);
+}
+.drill-tip {
+  margin: .55rem 0 0; font-size: .84rem; color: var(--muted);
+  line-height: 1.65; padding-top: .45rem; border-top: 1px dashed var(--line);
+}
+.drill-tip.tip-ok { color: var(--accent-ink); }
+.drill-tip-label {
+  display: inline-block; margin-right: .4em; padding: .05em .45em;
+  font-size: .72rem; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent-ink);
+}
+.drill-count { margin-left: .6rem; font-size: .74rem; color: var(--muted); font-weight: 400; }
+.drill-stat { font-size: .86rem; color: var(--muted); }
+.drill-stat b { color: var(--ink); font-variant-numeric: tabular-nums; }

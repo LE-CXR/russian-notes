@@ -1,5 +1,11 @@
 window.SEARCH_INDEX = [
   {
+    "page": "pages/drills.html",
+    "anchor": "drill-intro",
+    "title": "逐课自测 · 走遍俄罗斯 2",
+    "text": "每课 8 题 56 题 六格 四格 二格 三格 五格 复数各格 考卷口径 点选项即判对错 附讲解 成绩存本地 题库 js/drills.json"
+  },
+  {
     "page": "pages/doroga-2.html",
     "anchor": "dp2-intro",
     "title": "《走遍俄罗斯》第 2 册 · 课程路线图",
