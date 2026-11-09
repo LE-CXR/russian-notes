@@ -84,6 +84,11 @@
     bar.className = "study-toolbar";
     bar.innerHTML =
       '<button type="button" class="tool-btn" id="quizToggle">自测：隐藏中文</button>' +
+      '<span class="gf-divider"></span>' +
+      '<button type="button" class="tool-btn g-filter is-active" data-g="all">全部</button>' +
+      '<button type="button" class="tool-btn g-filter" data-g="阳">阳性</button>' +
+      '<button type="button" class="tool-btn g-filter" data-g="阴">阴性</button>' +
+      '<button type="button" class="tool-btn g-filter" data-g="中">中性</button>' +
       '<span class="tool-hint" id="quizHint">点任一单词显示它的中文</span>';
     main.insertBefore(bar, main.children[1] || null);
 
@@ -102,6 +107,30 @@
         });
       }
       apply(now);
+    });
+
+    // 按性筛选（名词性别是记变格的第一道门槛）
+    var gFilter = "all";
+    function applyGender() {
+      document.querySelectorAll("#main li").forEach(function (li) {
+        var g = li.querySelector(".vocab-g");
+        if (gFilter === "all") { li.hidden = false; return; }
+        li.hidden = !(g && g.textContent.trim() === gFilter);
+      });
+      document.querySelectorAll("#main section.card").forEach(function (sec) {
+        var any = false;
+        sec.querySelectorAll("li").forEach(function (li) { if (!li.hidden) any = true; });
+        sec.hidden = !any;
+      });
+    }
+    bar.querySelectorAll(".g-filter").forEach(function (b) {
+      b.addEventListener("click", function () {
+        gFilter = b.getAttribute("data-g");
+        bar.querySelectorAll(".g-filter").forEach(function (x) {
+          x.classList.toggle("is-active", x === b);
+        });
+        applyGender();
+      });
     });
 
     main.addEventListener("click", function (ev) {
