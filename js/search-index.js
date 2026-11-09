@@ -1,5 +1,35 @@
 window.SEARCH_INDEX = [
   {
+    "page": "pages/lesson-2.html",
+    "anchor": "l2-goal",
+    "title": "Урок 2 讲义 · 四格四大意义",
+    "text": "四格 винительный падеж 直接宾语 кого что 像谁 на кого 时间 как долго 方向 куда в школу в Москву"
+  },
+  {
+    "page": "pages/lesson-2.html",
+    "anchor": "l2-endings",
+    "title": "Урок 2 讲义 · 四格词尾与动物名词",
+    "text": "阳性非动物等于一格 阳性动物等于二格 -ого -его 阴性 -у -юю 中性一格 形容词四格"
+  },
+  {
+    "page": "pages/lesson-2.html",
+    "anchor": "l2-motion",
+    "title": "Урок 2 讲义 · 运动动词加前缀",
+    "text": "идти ходить ехать ездить пойти поехать прийти приехать уйти уехать дойти доехать домой сюда туда"
+  },
+  {
+    "page": "pages/lesson-2.html",
+    "anchor": "l2-reported",
+    "title": "Урок 2 讲义 · 直接引语转间接引语",
+    "text": "间接引语 что ли 疑问词 人称调整 спросил сказал"
+  },
+  {
+    "page": "pages/lesson-2.html",
+    "anchor": "l2-errors",
+    "title": "Урок 2 讲义 · 六个易错点",
+    "text": "в шко́ле в шко́лу вижу друга сестру в Москву домой пойти поехать 自查三问"
+  },
+  {
     "page": "pages/lesson-1.html",
     "anchor": "l1-goal",
     "title": "Урок 1 讲义 · 六格三大意义",

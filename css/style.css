@@ -857,3 +857,5 @@ td.bad { color: var(--sv); }
 td.good { color: var(--accent-ink); }
 p.tip { border-left: 3px solid var(--accent); padding-left: .7rem; }
 .lesson-links { margin: .4rem 0 0; font-size: .86rem; }
+.lesson-switch { margin: -.3rem 0 .9rem; font-size: .86rem; color: var(--muted); }
+.lesson-switch a { margin-right: .15rem; }
