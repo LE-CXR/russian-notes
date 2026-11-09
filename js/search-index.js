@@ -1,5 +1,41 @@
 window.SEARCH_INDEX = [
   {
+    "page": "pages/lesson-6.html",
+    "anchor": "l6-gen",
+    "title": "Урок 6 讲义 · 复数二格（最难）",
+    "text": "复数二格 -ов -ев -ей 零词尾 阴性零词尾  врач → врачей 插入元音 девушек лет людей детей"
+  },
+  {
+    "page": "pages/lesson-6.html",
+    "anchor": "l6-goal",
+    "title": "Урок 6 讲义 · 复数各格总表",
+    "text": "复数一格 二格 三格 -ам 四格 五格 -ами 六格 -ах 动物非动物 泛指人称句"
+  },
+  {
+    "page": "pages/lesson-6.html",
+    "anchor": "l6-clauses",
+    "title": "Урок 6 讲义 · который если хотя",
+    "text": "定语从句 который 条件 если 让步 хотя 泛指人称 открыли готовят"
+  },
+  {
+    "page": "pages/lesson-7.html",
+    "anchor": "l7-table",
+    "title": "Урок 7 考卷 · 六格总速查",
+    "text": "六格总表 提问词 前置词 一格到六格 复习 考前 速查"
+  },
+  {
+    "page": "pages/lesson-7.html",
+    "anchor": "l7-top",
+    "title": "Урок 7 考卷 · 高频考点 TOP 10",
+    "text": "高频考点 где куда откуда нет 二格 нравится 动物名词四格 数词支配 чтобы 完成体将来时"
+  },
+  {
+    "page": "pages/lesson-7.html",
+    "anchor": "l7-plan",
+    "title": "Урок 7 考卷 · 七天复习安排",
+    "text": "考前七天 复习计划 做题策略 五大扣分点"
+  },
+  {
     "page": "pages/lesson-5.html",
     "anchor": "l5-goal",
     "title": "Урок 5 讲义 · 五格七大意义",
