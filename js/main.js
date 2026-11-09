@@ -150,11 +150,19 @@
     var nq = normalize(q);
     if (!/[\u4e00-\u9fa5]/.test(nq)) return [];
     var out = [];
+    var seen = {};
     for (var ru in zhDict) {
       if (!Object.prototype.hasOwnProperty.call(zhDict, ru)) continue;
       var zh = zhDict[ru];
       if (normalize(zh).indexOf(nq) < 0) continue;
-      out.push({ ru: ru, zh: zh });
+      var disp = ru;
+      // 只认括号里「纯西里尔字母（可带重音/空格/连字符）」的词形，避免把「二格」这类说明当成词
+      var m2 = zh.match(/（([А-Яа-яЁё\u0301\s/-]{2,28})[，）]/);
+      if (m2) disp = m2[1];
+      var key = normalize(disp);
+      if (seen[key]) continue;      // 同一词形只列一次
+      seen[key] = 1;
+      out.push({ ru: ru, zh: zh, display: disp });
       if (out.length >= 8) break;
     }
     return out;
@@ -199,8 +207,8 @@
     if (!zhDict) loadZhDict();
     var dictHtml = dictHits.map(function (d) {
       return (
-        '<button type="button" class="search-hit search-dict" data-copy="' + escapeHtml(d.ru) + '">' +
-          '<span class="hit-title">' + highlightText(d.ru, "") + '</span>' +
+        '<button type="button" class="search-hit search-dict" data-copy="' + escapeHtml(d.display || d.ru) + '">' +
+          '<span class="hit-title">' + highlightText(d.display || d.ru, "") + '</span>' +
           '<span class="hit-snip">词义：' + highlightText(d.zh, q) + ' · 点击复制</span>' +
         "</button>"
       );
