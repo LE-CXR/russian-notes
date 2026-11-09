@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
-"""Build offline js/ru-zh.json from vocab lists and grammar tables in HTML."""
+"""Build offline js/ru-zh.json from vocab lists and grammar tables in HTML.
+
+⚠️ 这份词典已人工校对过（440+ 条错位释义被逐个改正，并补了变位/变格词条）。
+   直接重跑本脚本会用页面抽取结果覆盖人工成果，因此默认拒绝写入已存在的
+   大词典；确需重建时加 --force，并准备重新校对。
+   抽取逻辑本身的已知坑：表格「最后一格当中文」的做法会把整段例句的译文
+   配给同一行所有俄语词，2026-11 因此产生过 автобус=票、армия=兵马俑 这类错位。
+   下面的 looks_like_sentence() 就是给这类值加的质量闸门。
+"""
 
 from __future__ import annotations
+
+import sys
 
 import json
 import re
@@ -24,6 +34,20 @@ def norm_key(word: str) -> str:
     return w
 
 
+SENTENCE_HINT = re.compile(r"[。！？]$|^(我|你|他|她|它|他们|你们)", re.UNICODE)
+
+
+def looks_like_sentence(zh: str) -> bool:
+    """整句译文 / 例句译文不该当作单词释义。"""
+    if SENTENCE_HINT.search(zh):
+        return True
+    if len(zh) > 26:
+        return True
+    if zh.count("·") >= 2:
+        return True
+    return False
+
+
 def add_entry(d: dict[str, str], ru: str, zh: str, *, force: bool = False) -> None:
     ru = ru.strip()
     zh = zh.strip()
@@ -38,8 +62,14 @@ def add_entry(d: dict[str, str], ru: str, zh: str, *, force: bool = False) -> No
         return
     if len(key) == 1 and key not in ("я", "у", "в", "к", "с", "о", "и", "а"):
         return
-    if key in d and not force:
-        if len(d[key]) <= 40:
+    if key in d:
+        old = d[key]
+        if not force and len(old) <= 40:
+            return
+        # 新值像整句、旧值不像 → 保留旧值，避免错位译文覆盖正确释义
+        if force and looks_like_sentence(zh) and not looks_like_sentence(old):
+            return
+        if force and len(old) < 12 and looks_like_sentence(zh):
             return
     d[key] = zh
 
@@ -233,6 +263,17 @@ def build_dict() -> dict[str, str]:
 
 
 def main() -> None:
+    if OUT.exists():
+        try:
+            existing = json.loads(OUT.read_text(encoding="utf-8"))
+        except Exception:
+            existing = {}
+        if len(existing) > 1200 and "--force" not in sys.argv:
+            print(
+                f"拒绝覆盖：{OUT.relative_to(ROOT)} 已有 {len(existing)} 条，"
+                "且经过人工校对。确需重建请加 --force 后重新校对。"
+            )
+            return
     d = build_dict()
     OUT.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(d)} lemmas to {OUT.relative_to(ROOT)}")
