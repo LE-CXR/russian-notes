@@ -68,11 +68,32 @@
       }
     }
 
+    // 剥掉词尾后，把可能的原形词尾补回去再查一次：
+    // 名词/形容词补 а/о/ь/я/й/ы；动词补 ть/ти/чь；-лю/-плю 类补 -ить
+    var nounTails = ["а", "о", "ь", "я", "й", "ы"];
+    var verbTails = ["ть", "ти", "чь"];
+
+    function hit(t) {
+      if (dict[t]) return t;
+      for (var a = 0; a < nounTails.length; a++) {
+        if (dict[t + nounTails[a]]) return t + nounTails[a];
+      }
+      for (var b = 0; b < verbTails.length; b++) {
+        if (dict[t + verbTails[b]]) return t + verbTails[b];
+      }
+      // куплю → купить、готовлю → готовить、люблю → любить
+      if (t.length > 2 && /л$/.test(t)) {
+        var stem = t.slice(0, -1);
+        if (dict[stem + "ить"]) return stem + "ить";
+        if (dict[stem + "еть"]) return stem + "еть";
+        if (dict[stem + "ать"]) return stem + "ать";
+      }
+      return null;
+    }
+
     for (var i = 0; i < tries.length; i++) {
-      var t = tries[i];
-      if (dict[t]) return { gloss: dict[t], lemma: t, matched: t };
-      if (dict[t + "ть"]) return { gloss: dict[t + "ть"], lemma: t + "ть", matched: t + "ть" };
-      if (dict[t + "ти"]) return { gloss: dict[t + "ти"], lemma: t + "ти", matched: t + "ти" };
+      var found = hit(tries[i]);
+      if (found) return { gloss: dict[found], lemma: found, matched: found };
     }
     return { gloss: null, lemma: key, matched: null };
   }
