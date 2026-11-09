@@ -6,6 +6,8 @@
   "use strict";
 
   var STORE = "ruNotesDrills";
+  var FILTER_KEY = "ruNotesDrillFilter";
+  var filter = "all";   // all | wrong | todo
   var state = {};            // "lesson-index" -> {pick:n, ok:bool}
   var data = null;
 
@@ -42,6 +44,90 @@
     return { total: total, done: done, ok: ok };
   }
 
+  function applyFilter() {
+    var items = document.querySelectorAll(".drill-item");
+    items.forEach(function (box) {
+      var st = state[box.getAttribute("data-key")];
+      var show;
+      if (filter === "wrong") show = !!st && !st.ok;
+      else if (filter === "todo") show = !st;
+      else show = true;
+      box.hidden = !show;
+    });
+    document.querySelectorAll("#drillApp section.card").forEach(function (sec) {
+      var any = false;
+      sec.querySelectorAll(".drill-item").forEach(function (b) { if (!b.hidden) any = true; });
+      sec.hidden = !any;
+    });
+    var btn = document.getElementById("drillRedo");
+    if (btn) {
+      var wrong = 0;
+      Object.keys(state).forEach(function (k) { if (!state[k].ok) wrong++; });
+      btn.disabled = wrong === 0;
+      btn.textContent = wrong ? "重做错题（" + wrong + "）" : "没有错题";
+    }
+    var cnt = document.getElementById("drillFilterCount");
+    if (cnt) {
+      var shown = 0;
+      items.forEach(function (b) { if (!b.hidden) shown++; });
+      cnt.textContent = "显示 " + shown + " / " + items.length + " 题";
+    }
+    try { localStorage.setItem(FILTER_KEY, filter); } catch (e) {}
+  }
+
+  function buildFilters() {
+    if (document.getElementById("drillFilters")) return;
+    var host = document.getElementById("drillStats");
+    if (!host) return;
+    var wrap = document.createElement("div");
+    wrap.className = "study-toolbar drill-filters";
+    wrap.id = "drillFilters";
+    wrap.innerHTML =
+      '<button type="button" class="tool-btn" data-filter="all">全部题目</button>' +
+      '<button type="button" class="tool-btn" data-filter="wrong">只看错题</button>' +
+      '<button type="button" class="tool-btn" data-filter="todo">只看未做</button>' +
+      '<button type="button" class="tool-btn" id="drillRedo">重做错题</button>' +
+      '<span class="tool-hint" id="drillFilterCount"></span>';
+    host.parentNode.insertBefore(wrap, host.nextSibling);
+
+    wrap.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-filter]");
+      if (!b) return;
+      filter = b.getAttribute("data-filter");
+      wrap.querySelectorAll("button[data-filter]").forEach(function (x) {
+        x.classList.toggle("is-active", x.getAttribute("data-filter") === filter);
+      });
+      applyFilter();
+    });
+
+    var redo = wrap.querySelector("#drillRedo");
+    if (redo) {
+      redo.addEventListener("click", function () {
+        Object.keys(state).forEach(function (k) {
+          if (state[k] && !state[k].ok) {
+            delete state[k];
+            var box = document.querySelector('[data-key="' + k + '"]');
+            if (box) {
+              box.classList.remove("is-wrong", "is-right");
+              box.querySelectorAll(".drill-opt").forEach(function (o) {
+                o.classList.remove("is-pick", "is-correct");
+              });
+              var tip = box.querySelector(".drill-tip");
+              if (tip) tip.hidden = true;
+            }
+          }
+        });
+        save();
+        renderStats();
+        applyFilter();
+      });
+    }
+
+    wrap.querySelectorAll("button[data-filter]").forEach(function (x) {
+      x.classList.toggle("is-active", x.getAttribute("data-filter") === filter);
+    });
+  }
+
   function renderStats() {
     var s = stats();
     var el = document.getElementById("drillStats");
@@ -52,6 +138,8 @@
       '<span class="drill-stat">正确 <b>' + s.ok + "</b></span>" +
       '<span class="drill-stat">正确率 <b>' + rate + "%</b></span>" +
       '<button type="button" class="tool-btn" id="drillReset">清空成绩</button>';
+    buildFilters();
+    applyFilter();
     var btn = document.getElementById("drillReset");
     if (btn) {
       btn.addEventListener("click", function () {
@@ -66,6 +154,7 @@
           if (tip) tip.hidden = true;
         });
         renderStats();
+        applyFilter();
       });
     }
   }
@@ -170,6 +259,10 @@
   }
 
   function boot() {
+    try {
+      var f = localStorage.getItem(FILTER_KEY);
+      if (f === "wrong" || f === "todo" || f === "all") filter = f;
+    } catch (e) {}
     fetch(prefix() + "js/drills.json")
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) { data = d; render(); })

@@ -859,3 +859,10 @@ p.tip { border-left: 3px solid var(--accent); padding-left: .7rem; }
 .lesson-links { margin: .4rem 0 0; font-size: .86rem; }
 .lesson-switch { margin: -.3rem 0 .9rem; font-size: .86rem; color: var(--muted); }
 .lesson-switch a { margin-right: .15rem; }
+
+/* 自测筛选条 */
+.drill-filters { margin: -.4rem 0 1rem; }
+.drill-filters .tool-btn.is-active {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+}
+.drill-filters .tool-btn[disabled] { opacity: .55; cursor: default; }
