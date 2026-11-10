@@ -1,5 +1,35 @@
 window.SEARCH_INDEX = [
   {
+    "page": "pages/adj-six-cases.html",
+    "anchor": "adj-key",
+    "title": "形容词六格 · 只有三套",
+    "text": "形容词变格 новый -ый -ого -ому -ым -ом 阴性 -ая -ой -ую 复数 -ые -ых -ым -ыми 四格动物"
+  },
+  {
+    "page": "pages/adj-six-cases.html",
+    "anchor": "adj-plyos",
+    "title": "形容词六格 · 课本第 10 页那一串",
+    "text": "этот старый город этого старого города этому старому городу этим старым городом в этом старом городе Плёс"
+  },
+  {
+    "page": "pages/adj-six-cases.html",
+    "anchor": "adj-types",
+    "title": "形容词六格 · 四种词干",
+    "text": "硬 软 соседний г к х маленький ж ш ч щ хороший большой 重音 большим"
+  },
+  {
+    "page": "pages/adj-six-cases.html",
+    "anchor": "adj-pron",
+    "title": "形容词六格 · 物主代词与指示代词",
+    "text": "мой моя моего моему моим моём этот этого этому каким чей его её их 不变"
+  },
+  {
+    "page": "pages/adj-six-cases.html",
+    "anchor": "adj-errors",
+    "title": "形容词六格 · 六个易错点",
+    "text": "в новом доме маленького хорошего большим этого дома 三步动作 定格 定性 套词干"
+  },
+  {
     "page": "pages/lesson-1.html",
     "anchor": "l1-book",
     "title": "Урок 1 讲义 · 教材原文对照",
