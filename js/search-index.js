@@ -1,5 +1,11 @@
 window.SEARCH_INDEX = [
   {
+    "page": "pages/lesson-1.html",
+    "anchor": "l1-book",
+    "title": "Урок 1 讲义 · 教材原文对照",
+    "text": "教材实际结构 名词变格总览 形容词代词按性别变格 表1表2表3表4 Плёс Чистые пруды Левитан Чехов Нагибин Речевые образцы 五个五格问句"
+  },
+  {
     "page": "pages/lesson-6.html",
     "anchor": "l6-gen",
     "title": "Урок 6 讲义 · 复数二格（最难）",
